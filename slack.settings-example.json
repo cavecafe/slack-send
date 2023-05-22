@@ -1,0 +1,5 @@
+{
+  "ApiToken": "x0xb-your-Slack-API-token",
+  "ApiUrl": "https://slack.com/api/chat.postMessage",
+  "Channels": "your-channel-name1;your-channel-name2"
+}

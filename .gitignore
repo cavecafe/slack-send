@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+slack.settings.json
+.vs/
+.editorconfig
+*.pubxml
+bin/
+obj/
