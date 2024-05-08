@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Slack</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>SlackSend</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>Simple Slack channel message sender</Title>
@@ -16,7 +16,9 @@
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>cavecafe</Authors>
-    <Company>cavecafe.studio</Company>
+    <Company>cavecafe.cc</Company>
+    <LangVersion>12</LangVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,14 +40,22 @@
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="slack.channel.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Update="slack.settings.json">
+    <None Update="slack-send.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="slack-send-example.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
   </ItemGroup>
 
 </Project>

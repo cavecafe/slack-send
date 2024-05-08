@@ -1,0 +1,38 @@
+{
+  "ApiToken": "xoxb-your-slack-api-token",
+  "ApiUrl": "https://slack.com/api/chat.postMessage",
+  "Channels": [ "your-channel-to-post" ],
+  "Attachments": [
+    {
+      "mrkdwn_in": ["text"],
+      "color": "#36a64f",
+      "pretext": "Optional pre-text that appears above the attachment block",
+      "author_name": "GitHub Actions",
+      "author_icon": "https://github.com/fluidicon.png",
+      "title": "message title",
+      "title_link": "https://api.slack.com/",
+      "text": "`text` that appears within the attachment",
+      "fields":
+      [
+        {
+          "title": "A field's title",
+          "value": "This field's value",
+          "short": false
+        },
+        {
+          "title": "1st short title",
+          "value": "1st short value",
+          "short": true
+        },
+        {
+          "title": "2nd short title",
+          "value": "2nd short value",
+          "short": true
+        }
+      ],
+      "thumb_url": "https://a.slack-edge.com/bv1-13-br/nux-banner-background-1b25886.svg",
+      "footer": "footer-text",
+      "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png"
+    }
+  ]
+}

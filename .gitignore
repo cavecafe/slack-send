@@ -30,7 +30,8 @@
 *.exe
 *.out
 *.app
-slack.settings.json
+*.ipa
+slack-send.json
 .vs/
 .editorconfig
 *.pubxml
