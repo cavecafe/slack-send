@@ -10,14 +10,29 @@ public class SlackConfiguration
     public string? ApiUrl { get; init; }
     public string[]? Channels { get; set; }
     public Attachment[]? Attachments { get; set; }
-        
+    public static string? FileName { get; set; }
+
     public void UpdateWith(Options options)
     {
-        if (!string.IsNullOrWhiteSpace(options.Channels))
+        if (string.IsNullOrWhiteSpace(options.Channels))
         {
-            Channels = options.Channels.Split(';');
+            Console.Error.WriteLine($"Channels is required in the '{FileName}' or as an argument");
+            Environment.Exit(1);
         }
+        Channels = options.Channels.Split(';');
+        if (string.IsNullOrWhiteSpace(options.Message))
+        {
+            Console.Error.WriteLine($"Message is required in the '{FileName}' or as an argument");
+            Environment.Exit(1);
+        }
+        
         Attachments ??= [ new Attachment() ];
+        foreach (var attachment in Attachments)
+        {
+            attachment.text = options.Message;
+        }
+        
+        // Override the description with the desc option
         if (!string.IsNullOrWhiteSpace(options.Description))
         {
             foreach (var attachment in Attachments)
@@ -25,6 +40,8 @@ public class SlackConfiguration
                 attachment.pretext = options.Description;
             }
         }
+        
+        // Override the title with the title option
         if (!string.IsNullOrWhiteSpace(options.Title))
         {
             foreach (var attachment in Attachments)
@@ -32,13 +49,8 @@ public class SlackConfiguration
                 attachment.title = options.Title;
             }
         }
-        if (!string.IsNullOrWhiteSpace(options.Message))
-        {
-            foreach (var attachment in Attachments)
-            {
-                attachment.text = options.Message;
-            }
-        }
+        
+        // Override the color with the status option
         if (!string.IsNullOrWhiteSpace(options.Status))
         {
             foreach (var attachment in Attachments)
@@ -46,6 +58,8 @@ public class SlackConfiguration
                 attachment.color = options.Status;
             }
         }
+        
+        // override the message with the JSON string, which formated as MessageRequest
         if (!string.IsNullOrWhiteSpace(options.Json))
         {
             var json = JsonSerializer.Deserialize<MessageRequest>(options.Json);
@@ -123,46 +137,14 @@ public class SlackClient : HttpClient
             Environment.Exit(1);
         }
     }
-    private bool Init(string path, string assemblyName)
+    private bool Init(string path, string? assemblyName)
     {
-        #if DEBUG
-        // SlackConfiguration settings = new()
-        // {
-        //     ApiToken = "api-token",
-        //     ApiUrl = "https://slack.com/api/chat.postMessage",
-        //     Channels = ["channel1", "channel2"],
-        //     Attachments =
-        //     [
-        //         new Attachment
-        //         {
-        //             color = "good",
-        //             title = "title",
-        //             text = "text",
-        //             ts = 1234567890,
-        //             fields = new List<Field>
-        //             {
-        //                 new Field
-        //                 {
-        //                     title = "field1",
-        //                     value = "value1",
-        //                     @short = true
-        //                 }
-        //             }
-        //         }
-        //     ]
-        // };
-        //
-        // string json1 = JsonSerializer.Serialize(settings);
-        // string dir1 = Path.GetDirectoryName(path)!;
-        // File.WriteAllText(Path.Combine(dir1, $"{assemblyName}-sample.json"), json1);
-        #endif
-        
-        
         bool ret = false;
         try
         {
+            SlackConfiguration.FileName = $"{assemblyName}.json";
             string dir = Path.GetDirectoryName(path)!;
-            string json = File.ReadAllText(Path.Combine(dir, $"{assemblyName}.json"));
+            string json = File.ReadAllText(Path.Combine(dir, SlackConfiguration.FileName));
             Settings = JsonSerializer.Deserialize<SlackConfiguration>(json);
             ret = Settings != null;
         }
