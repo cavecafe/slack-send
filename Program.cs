@@ -16,6 +16,10 @@ if (fullPath != null)
         //     "--message", "test message", 
         //     "--status", "warning"
         // ];
+        // args = [
+        //     "-c", "build",
+        //     "-m", "Hello My Slack Channel!",
+        // ];
 
         var parser = new Parser(with =>
         {
