@@ -37,3 +37,4 @@ slack-send.json
 *.pubxml
 bin/
 obj/
+*.DotSettings.user
