@@ -1,6 +1,6 @@
 using SlackSend;
 
-[assembly: BuildNumber("10")]
+[assembly: BuildNumber("13")]
 
 namespace SlackSend;
 

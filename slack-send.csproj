@@ -6,9 +6,10 @@
     <RootNamespace>SlackSend</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Title>Simple Slack channel message sender</Title>
-    <Description>Simple Slack channel message sender</Description>
-    <Copyright>MIT</Copyright>
+    <Title>Slack Send</Title>
+    <Description>A simple utility to send a Slack message using Slack Web API to your channels.</Description>
+    <Copyright>cavecafe</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>slack.channel.png</PackageIcon>
     <RepositoryUrl>https://github.com/cavecafe/slack-send</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -18,8 +19,9 @@
     <Authors>cavecafe</Authors>
     <Company>cavecafe.cc</Company>
     <LangVersion>12</LangVersion>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
     <PackageProjectUrl>https://github.com/cavecafe/slack-send/blob/main/README.md</PackageProjectUrl>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

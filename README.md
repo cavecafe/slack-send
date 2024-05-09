@@ -45,7 +45,7 @@ slack-send -d <description> -t <title> -m <message> -c <channel1>;<channel2> ...
 ![Message with JSON payload](app-message-05.png)
 
 ## Pre-requisites
-- Create a ![Slack App and get the API Key](https://api.slack.com/messaging/sending)
+- Create a [Slack App and get the API Key](https://api.slack.com/messaging/sending)
 - Create a configuration file `slack-send.json` in the same directory as the `slack-send` executable.
 - Then run ./slack-send -m "Hello, My Slack Channel!" -c "#general"
 
