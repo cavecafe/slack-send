@@ -135,42 +135,42 @@ parts:
     stage-packages:
       - libicu72
   
-  slack-send-osx-arm64:
-    plugin: dotnet
-    source: .
-    dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: osx-arm64
-    build-packages:
-      - dotnet-sdk-8.0
-    stage-packages:
-      - libicu72
-
-  slack-send-osx-x64:
-    plugin: dotnet
-    source: .
-    dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: osx-x64
-    build-packages:
-      - dotnet-sdk-8.0
-    stage-packages:
-      - libicu72
-  
-  slack-send-windows-arm64:
-    plugin: dotnet
-    source: .
-    dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: windows-arm64
-    build-packages:
-      - dotnet-sdk-8.0
-    stage-packages:
-      - libicu72
-  
-  slack-send-windows-x64:
-    plugin: dotnet
-    source: .
-    dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: windows-x64
-    build-packages:
-      - dotnet-sdk-8.0
-    stage-packages:
-      - libicu72
+#  slack-send-osx-arm64:
+#    plugin: dotnet
+#    source: .
+#    dotnet-build-configuration: Release
+#    dotnet-self-contained-runtime-identifier: osx-arm64
+#    build-packages:
+#      - dotnet-sdk-8.0
+#    stage-packages:
+#      - libicu72
+#
+#  slack-send-osx-x64:
+#    plugin: dotnet
+#    source: .
+#    dotnet-build-configuration: Release
+#    dotnet-self-contained-runtime-identifier: osx-x64
+#    build-packages:
+#      - dotnet-sdk-8.0
+#    stage-packages:
+#      - libicu72
+#  
+#  slack-send-windows-arm64:
+#    plugin: dotnet
+#    source: .
+#    dotnet-build-configuration: Release
+#    dotnet-self-contained-runtime-identifier: windows-arm64
+#    build-packages:
+#      - dotnet-sdk-8.0
+#    stage-packages:
+#      - libicu72
+#  
+#  slack-send-windows-x64:
+#    plugin: dotnet
+#    source: .
+#    dotnet-build-configuration: Release
+#    dotnet-self-contained-runtime-identifier: windows-x64
+#    build-packages:
+#      - dotnet-sdk-8.0
+#    stage-packages:
+#      - libicu72
