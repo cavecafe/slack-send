@@ -114,6 +114,9 @@ plugs:
       - $HOME/.slack-send
     write:
       - $HOME/.slack-send
+  network:
+    interface: network
+    target: network
 
 compression: lzo
 build-base: core22
