@@ -119,7 +119,7 @@ plugs:
     target: network
 
 compression: lzo
-build-base: core22
+build-base: core24
 
 parts:
   # instead of all self-contained per platforms, 
