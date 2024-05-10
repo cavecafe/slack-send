@@ -54,7 +54,7 @@ package-repositories:
   - type: apt
     key-id: F3AB71A9B4E0130AD5A17B067EB6A2FAC336E133
     url: https://github.com/cavecafe/slack-send/
-    suites: [ devel, stable, testing ]
+    suites: [ stable, testing ]
     components: [ main ]
     architectures: [ amd64, arm64 ]
 
@@ -128,49 +128,49 @@ parts:
   slack-send-linux-x64:
     plugin: dotnet
     source: .
+    dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
       - dotnet-sdk-8.0
-      - dotnet-runtime-8.0
     stage-packages:
-      - dotnet-runtime-8.0
+      - libicu72
   
   slack-send-osx-arm64:
     plugin: dotnet
     source: .
+    dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: osx-arm64
     build-packages:
       - dotnet-sdk-8.0
-      - dotnet-runtime-8.0
     stage-packages:
-      - dotnet-runtime-8.0
+      - libicu72
 
   slack-send-osx-x64:
     plugin: dotnet
     source: .
+    dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: osx-x64
     build-packages:
       - dotnet-sdk-8.0
-      - dotnet-runtime-8.0
     stage-packages:
-      - dotnet-runtime-8.0
+      - libicu72
   
   slack-send-windows-arm64:
     plugin: dotnet
     source: .
+    dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: windows-arm64
     build-packages:
       - dotnet-sdk-8.0
-      - dotnet-runtime-8.0
     stage-packages:
-      - dotnet-runtime-8.0
+      - libicu72
   
   slack-send-windows-x64:
     plugin: dotnet
     source: .
+    dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: windows-x64
     build-packages:
       - dotnet-sdk-8.0
-      - dotnet-runtime-8.0
     stage-packages:
-      - dotnet-runtime-8.0
+      - libicu72
