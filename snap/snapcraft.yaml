@@ -10,8 +10,10 @@ name: slack-send
 # Incorporate external metadata via the referenced parts
 adopt-info: slack-send
 
+
 # the base snap is the execution environment for this snap
-base: core22
+base: 
+  ubuntu-24.04
 
 # just for humans, typically '1.2+git' or '1.3.2'
 version: '1.1.1'
@@ -50,12 +52,12 @@ title: SlackSend
 issues: https://github.com/cavecafe/slack-send/issues
 contact: thomas <cavecafe@gmail.com>
 package-repositories:
-- type: apt
-  key-id: F3AB71A9B4E0130AD5A17B067EB6A2FAC336E133
-  url: https://github.com/cavecafe/slack-send/
-  suites: [stable, testing]
-  components: [main]
-  architectures: [amd64, arm64]
+  - type: apt
+    key-id: F3AB71A9B4E0130AD5A17B067EB6A2FAC336E133
+    url: https://github.com/cavecafe/slack-send/
+    suites: [ stable, testing ]
+    components: [ main ]
+    architectures: [ amd64, arm64 ]
 
 # Files to pass through to the snap from the build environment
 #passthrough:
@@ -105,14 +107,14 @@ environment:
 source-code: https://github.com/cavecafe/slack-send
 
 build-packages:
-- dotnet-sdk-8.0
+  - dotnet-sdk-8.0
 plugs:
   home:
     interface: personal-files
     read:
-    - $HOME/.slack-send
+      - $HOME/.slack-send
     write:
-    - $HOME/.slack-send
+      - $HOME/.slack-send
   network:
     interface: network
     target: network
@@ -130,9 +132,9 @@ parts:
     dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
-    - dotnet-sdk-8.0
+      - dotnet-sdk-8.0
     stage-packages:
-    - libicu72
+      - libicu72
 
 #  slack-send-osx-arm64:
 #    plugin: dotnet
@@ -172,4 +174,17 @@ parts:
 #    build-packages:
 #      - dotnet-sdk-8.0
 #    stage-packages:
-#      - libicu72
+architectures:
+  -
+assumes:
+  -
+slots:
+frameworks:
+  -
+passthrough:
+donation:
+ua-services:
+  -
+system-usernames:
+hooks:
+  version-script:#      - libicu72
