@@ -48,6 +48,7 @@
     <None Update="slack.channel.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="slack-send.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
