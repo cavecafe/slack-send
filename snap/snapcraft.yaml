@@ -174,17 +174,4 @@ parts:
 #    build-packages:
 #      - dotnet-sdk-8.0
 #    stage-packages:
-architectures:
-  -
-assumes:
-  -
-slots:
-frameworks:
-  -
-passthrough:
-donation:
-ua-services:
-  -
-system-usernames:
-hooks:
-  version-script:#      - libicu72
+#      - libicu72
