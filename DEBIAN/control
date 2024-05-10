@@ -1,8 +1,0 @@
-Package: slack-send
-Version: 1.1.0
-Section: devel
-Priority: optional
-Architecture: amd64
-Depends: libc6
-Maintainer: cavecafe <cavecafe@gmail.com>
-Description: A simple utility to send a Slack message using Slack Web API to your channels

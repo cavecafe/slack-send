@@ -42,7 +42,7 @@ slack-send -d <description> -t <title> -m <message> -c <channel1>;<channel2> ...
 # slack-send -d "This is a description" -t "This is a title" -m "Hello, My Slack Channel!" -c "#general;#random" -j "{\"color\":\"#36a64f\",\"pretext\":\"Optional pre-text that appears above the attachment block\",\"author_name\":\"author_name\",\"author_link\":\"https://flickr.com/bobby/\",\"author_icon\":\"https://placeimg.com/16/16/people\",\"title\":\"title\",\"title_link\":\"https://api.slack.com/\",\"text\":\"Optional `text` that appears within the attachment\",\"fields\":[{\"title\":\"A field's title\",\"value\":\"This field's value\",\"short\":false},{\"title\":\"A short field's title\",\"value\":\"A short field's value\",\"short\":true},{\"title\":\"A second short field's title\",\"value\":\"A second short field's value\",\"short\":true}],\"thumb_url\":\"https://placekitten.com/g/200/200\",\"footer\":\"footer\",\"footer_icon\":\"https://platform.slack-edge.com/img/default_application_icon.png\",\"ts\":123456789}"
 ```
 
-![Message with JSON payload](app-message-01.png)
+![Message with JSON payload](images/message.png)
 
 ## Pre-requisites
 - Create a [Slack App and get the API Key](https://api.slack.com/messaging/sending)
@@ -118,7 +118,7 @@ Example:
 }
 ```
 
-![Reference to Slack Web API](app-message-05.png)
+![Reference to Slack Web API](images/slack-api.png)
 
 ### Reference
 - https://api.slack.com/messaging/sending#publishing
