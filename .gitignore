@@ -38,3 +38,4 @@ slack-send.json
 bin/
 obj/
 *.DotSettings.user
+/.idea/
