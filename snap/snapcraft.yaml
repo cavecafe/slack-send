@@ -21,7 +21,9 @@ layout:
   /usr/local/slack-send/:
     bind: $SNAP/usr/local/slack-send/
   /usr/local/bin/slack-send:
-    symlink: /usr/local/slack-send/slack-send
+    symlink: bin/slack-send
+#  /usr/local/slack-send/bin:
+#    bind: $SNAP/usr/local/slack-send/bin
 license: MIT
 environment:
   DOTNET_ROOT: $SNAP/usr/share/dotnet
@@ -45,6 +47,8 @@ parts:
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
       - dotnet-sdk-8.0
+    stage-packages:
+      - liblttng-ust
 #  slack-send-osx-arm64:
 #    plugin: dotnet
 #    source: .
