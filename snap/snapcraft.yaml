@@ -48,7 +48,7 @@ parts:
     build-packages:
       - dotnet-sdk-8.0
     stage-packages:
-      - libicu72
+      - dotnet-sdk-8.0
 #  slack-send-osx-arm64:
 #    plugin: dotnet
 #    source: .
