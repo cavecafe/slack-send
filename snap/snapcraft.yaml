@@ -18,8 +18,8 @@ apps:
     command: /usr/local/bin/slack-send
 website: https://github.com/cavecafe/slack-send
 layout:
-  /snap/slack-send/current/usr/local/slack-send/:
-    bind: $SNAP/usr/local/slack-send/
+  '/':
+  bind: $SNAP
 #layout:
 #  /usr/local/slack-send/:
 #    bind: $SNAP/usr/local/slack-send/
@@ -53,10 +53,6 @@ parts:
     stage-packages:
       - dotnet-sdk-8.0
       - liblttng-ust-dev
-#      - libicu66
-#      - libssl1.1
-#      - libkrb5-3
-#      - zlib1g 
 #  slack-send-osx-arm64:
 #    plugin: dotnet
 #    source: .
