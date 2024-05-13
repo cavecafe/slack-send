@@ -48,7 +48,8 @@ parts:
     build-packages:
       - dotnet-sdk-8.0
     stage-packages:
-      - liblttng-ust
+      - dotnet-sdk-8.0
+      - liblttng-ust-dev
 #  slack-send-osx-arm64:
 #    plugin: dotnet
 #    source: .
