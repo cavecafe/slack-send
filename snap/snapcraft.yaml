@@ -18,10 +18,13 @@ apps:
     command: /usr/local/bin/slack-send
 website: https://github.com/cavecafe/slack-send
 layout:
-  /usr/local/slack-send/:
+  /snap/slack-send/current/usr/local/slack-send/:
     bind: $SNAP/usr/local/slack-send/
-  /usr/local/bin/slack-send:
-    symlink: $SNAP/usr/local/slack-send/slack-send
+#layout:
+#  /usr/local/slack-send/:
+#    bind: $SNAP/usr/local/slack-send/
+#  /usr/local/bin/slack-send:
+#    symlink: $SNAP/usr/local/slack-send/slack-send
 #  /usr/local/slack-send/bin:
 #    bind: $SNAP/usr/local/slack-send/bin
 license: MIT
@@ -49,6 +52,11 @@ parts:
       - dotnet-sdk-8.0
     stage-packages:
       - dotnet-sdk-8.0
+      - liblttng-ust0
+#      - libicu66
+#      - libssl1.1
+#      - libkrb5-3
+#      - zlib1g 
 #  slack-send-osx-arm64:
 #    plugin: dotnet
 #    source: .
