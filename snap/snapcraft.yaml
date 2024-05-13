@@ -52,7 +52,7 @@ parts:
       - dotnet-sdk-8.0
     stage-packages:
       - dotnet-sdk-8.0
-      - liblttng-ust0
+      - liblttng-ust-dev
 #      - libicu66
 #      - libssl1.1
 #      - libkrb5-3
