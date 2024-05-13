@@ -59,13 +59,6 @@ parts:
     dotnet-self-contained-runtime-identifier: osx-x64
     build-packages:
       - dotnet-sdk-8.0
-  slack-send-windows-arm64:
-    plugin: dotnet
-    source: .
-    dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: windows-arm64
-    build-packages:
-      - dotnet-sdk-8.0
   slack-send-windows-x64:
     plugin: dotnet
     source: .
