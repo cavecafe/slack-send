@@ -17,6 +17,9 @@ apps:
   slack-send:
     command: /usr/local/bin/slack-send
 website: https://github.com/cavecafe/slack-send
+layout:
+  /usr/local/slack-send/:
+  bind: $SNAP/usr/local/slack-send/
 #layout:
 #  '/':
 #  bind: $SNAP
