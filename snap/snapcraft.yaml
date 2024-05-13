@@ -52,13 +52,13 @@ title: SlackSend
 
 issues: https://github.com/cavecafe/slack-send/issues
 contact: thomas <cavecafe@gmail.com>
-package-repositories:
-  - type: apt
-    key-id: F3AB71A9B4E0130AD5A17B067EB6A2FAC336E133
-    url: https://github.com/cavecafe/slack-send/
-    suites: [ stable, testing ]
-    components: [ main ]
-    architectures: [ amd64, arm64 ]
+#package-repositories:
+#  - type: apt
+#    key-id: F3AB71A9B4E0130AD5A17B067EB6A2FAC336E133
+#    url: https://raw.githubusercontent.com/cavecafe/slack-send/main/gpg.key
+#    suites: [ stable, testing ]
+#    components: [ main ]
+#    architectures: [ amd64, arm64 ]
 
 # Files to pass through to the snap from the build environment
 #passthrough:
