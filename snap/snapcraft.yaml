@@ -42,12 +42,27 @@ parts:
     plugin: dotnet
     source: .
     dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: linux
+    dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
       - dotnet-sdk-8.0
-    stage-packages:
-      - dotnet-sdk-8.0
-      - liblttng-ust-dev
+      - libunwind8
+      - libssl1.1
+      - zlib1g
+      - curl
+      - ca-certificates
+      - libicu66
+      - libgcc1
+      - libstdc++6
+      - glibc
+      - libc6-compat
+      - linux-headers-amd64
+#    stage-packages:
+#      - dotnet-sdk-8.0
+#      - libicu-dev
+#      - liblttng-ust-dev
+#      - libssl-dev
+#      - libunwind-dev
+#      - zlib1g-dev
 #  slack-send-osx-arm64:
 #    plugin: dotnet
 #    source: .
