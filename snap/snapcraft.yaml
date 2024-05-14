@@ -50,7 +50,6 @@ parts:
       - ca-certificates
       - libgcc1
       - libstdc++6
-      - libc6-compat
 #    stage-packages:
 #      - dotnet-sdk-8.0
 #      - libicu-dev
