@@ -20,8 +20,9 @@ website: https://github.com/cavecafe/slack-send
 
 layout:
   /usr/local/slack-send:
-    type: symlink
-    source: $SNAP/usr/local/slack-send
+    bind: $SNAP/usr/local/slack-send
+  /etc/slack-send.json:
+    bind-file: $SNAP_DATA/etc/slack-send.json
 
 license: MIT
 environment:
