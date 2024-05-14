@@ -7,25 +7,14 @@ description: SlackSend is a CLI tool to send slack messages.
 grade: devel
 confinement: devmode
 icon: slack.channel.png
-epoch:
 type: app
 title: SlackSend
 issues: https://github.com/cavecafe/slack-send/issues
 contact: thomas <cavecafe@gmail.com>
-#apps:
-#  slack-send:
-#    command: /usr/local/bin/slack-send
-
 website: https://github.com/cavecafe/slack-send
 license: MIT
-#layout:
-#  /usr/local/slack-send:
-#    bind: $SNAP/usr/local/slack-send
-#  /etc/slack-send.json:
-#    bind-file: $SNAP_DATA/etc/slack-send.json
 environment:
   DOTNET_ROOT: $SNAP/usr/share/dotnet
-  #DOTNET_ROOT: $SNAP/usr/local/share/dotnet
 source-code: https://github.com/cavecafe/slack-send
 build-packages:
   - dotnet-sdk-8.0
@@ -46,38 +35,31 @@ parts:
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
       - dotnet-sdk-8.0
-#    stage-packages:
-#      - dotnet-sdk-8.0
-#      - libicu-dev
-#      - liblttng-ust-dev
-#      - libssl-dev
-#      - libunwind-dev
-#      - zlib1g-dev
-#  slack-send-osx-arm64:
-#    plugin: dotnet
-#    source: .
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: osx-arm64
-#    build-packages:
-#      - dotnet-sdk-8.0
-#  slack-send-osx-x64:
-#    plugin: dotnet
-#    source: .
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: osx-x64
-#    build-packages:
-#      - dotnet-sdk-8.0
-#  slack-send-windows-arm64:
-#    plugin: dotnet
-#    source: .
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: windows-arm64
-#    build-packages:
-#      - dotnet-sdk-8.0
-#  slack-send-windows-x64:
-#    plugin: dotnet
-#    source: .
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: windows-x64
-#    build-packages:
-#      - dotnet-sdk-8.0
+  slack-send-osx-arm64:
+    plugin: dotnet
+    source: .
+    dotnet-build-configuration: Release
+    dotnet-self-contained-runtime-identifier: osx-arm64
+    build-packages:
+      - dotnet-sdk-8.0
+  slack-send-osx-x64:
+    plugin: dotnet
+    source: .
+    dotnet-build-configuration: Release
+    dotnet-self-contained-runtime-identifier: osx-x64
+    build-packages:
+      - dotnet-sdk-8.0
+  slack-send-windows-arm64:
+    plugin: dotnet
+    source: .
+    dotnet-build-configuration: Release
+    dotnet-self-contained-runtime-identifier: windows-arm64
+    build-packages:
+      - dotnet-sdk-8.0
+  slack-send-windows-x64:
+    plugin: dotnet
+    source: .
+    dotnet-build-configuration: Release
+    dotnet-self-contained-runtime-identifier: windows-x64
+    build-packages:
+      - dotnet-sdk-8.0
