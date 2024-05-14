@@ -17,8 +17,7 @@ apps:
     command: /usr/local/bin/slack-send
 website: https://github.com/cavecafe/slack-send
 license: MIT
-layout:
-  /snap/bin: bin
+#layout:
 #  /usr/local/slack-send:
 #    bind: $SNAP/usr/local/slack-send
 #  /etc/slack-send.json:
