@@ -48,7 +48,6 @@ parts:
       - libunwind8
       - zlib1g
       - ca-certificates
-      - libicu66
       - libgcc1
       - libstdc++6
       - libc6-compat
