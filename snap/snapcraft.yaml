@@ -12,9 +12,10 @@ type: app
 title: SlackSend
 issues: https://github.com/cavecafe/slack-send/issues
 contact: thomas <cavecafe@gmail.com>
-apps:
-  slack-send:
-    command: /usr/local/bin/slack-send
+#apps:
+#  slack-send:
+#    command: /usr/local/bin/slack-send
+
 website: https://github.com/cavecafe/slack-send
 license: MIT
 #layout:
@@ -23,8 +24,8 @@ license: MIT
 #  /etc/slack-send.json:
 #    bind-file: $SNAP_DATA/etc/slack-send.json
 environment:
-  #DOTNET_ROOT: $SNAP/usr/share/dotnet
-  DOTNET_ROOT: $SNAP/usr/local/share/dotnet
+  DOTNET_ROOT: $SNAP/usr/share/dotnet
+  #DOTNET_ROOT: $SNAP/usr/local/share/dotnet
 source-code: https://github.com/cavecafe/slack-send
 build-packages:
   - dotnet-sdk-8.0
