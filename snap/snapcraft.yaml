@@ -51,7 +51,6 @@ parts:
       - libgcc1
       - libstdc++6
       - libc6-compat
-      - linux-headers-amd64
 #    stage-packages:
 #      - dotnet-sdk-8.0
 #      - libicu-dev
