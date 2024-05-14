@@ -37,7 +37,7 @@ plugs:
       - $HOME/.slack-send
     write:
       - $HOME/.slack-send
-compression: lzo
+# compression: lzo
 build-base: core24
 parts:
   slack-send-linux-x64:
