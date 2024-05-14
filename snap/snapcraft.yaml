@@ -45,11 +45,6 @@ parts:
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
       - dotnet-sdk-8.0
-      - libunwind8
-      - zlib1g
-      - ca-certificates
-      - libgcc1
-      - libstdc++6
 #    stage-packages:
 #      - dotnet-sdk-8.0
 #      - libicu-dev
