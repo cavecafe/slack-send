@@ -18,11 +18,11 @@ apps:
     command: /usr/local/bin/slack-send
 website: https://github.com/cavecafe/slack-send
 
-layout:
-  /usr/local/slack-send:
-    bind: $SNAP/slack-send
-  /etc/slack-send.json:
-    bind-file: $SNAP_DATA/etc/slack-send.json
+#layout:
+#  /usr/local/slack-send:
+#    bind: $SNAP/usr/local/slack-send
+#  /etc/slack-send.json:
+#    bind-file: $SNAP_DATA/etc/slack-send.json
 
 license: MIT
 environment:
@@ -37,7 +37,7 @@ plugs:
       - $HOME/.slack-send
     write:
       - $HOME/.slack-send
-# compression: lzo
+compression: lzo
 build-base: core24
 parts:
   slack-send-linux-x64:
