@@ -23,16 +23,6 @@ layout:
     type: symlink
     source: $SNAP/usr/local/slack-send
 
-#layout:
-#  '/':
-#  bind: $SNAP
-#layout:
-#  /usr/local/slack-send/:
-#    bind: $SNAP/usr/local/slack-send/
-#  /usr/local/bin/slack-send:
-#    symlink: $SNAP/usr/local/slack-send/slack-send
-#  /usr/local/slack-send/bin:
-#    bind: $SNAP/usr/local/slack-send/bin
 license: MIT
 environment:
   DOTNET_ROOT: $SNAP/usr/share/dotnet
