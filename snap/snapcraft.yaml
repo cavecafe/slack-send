@@ -51,7 +51,6 @@ parts:
       - libicu66
       - libgcc1
       - libstdc++6
-      - glibc
       - libc6-compat
       - linux-headers-amd64
 #    stage-packages:
