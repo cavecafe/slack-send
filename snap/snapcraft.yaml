@@ -1,7 +1,6 @@
 name: slack-send
 adopt-info: slack-send
-base: 
-  core24
+base: core24
 version: '1.1.1'
 summary: Command line tool to send messages to Slack channels
 description: SlackSend is a CLI tool to send slack messages.
@@ -17,16 +16,16 @@ apps:
   slack-send:
     command: /usr/local/bin/slack-send
 website: https://github.com/cavecafe/slack-send
-
-#layout:
+license: MIT
+layout:
+  /snap/bin: bin
 #  /usr/local/slack-send:
 #    bind: $SNAP/usr/local/slack-send
 #  /etc/slack-send.json:
 #    bind-file: $SNAP_DATA/etc/slack-send.json
-
-license: MIT
 environment:
-  DOTNET_ROOT: $SNAP/usr/share/dotnet
+  #DOTNET_ROOT: $SNAP/usr/share/dotnet
+  DOTNET_ROOT: $SNAP/usr/local/share/dotnet
 source-code: https://github.com/cavecafe/slack-send
 build-packages:
   - dotnet-sdk-8.0
@@ -44,7 +43,7 @@ parts:
     plugin: dotnet
     source: .
     dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: linux-x64
+    dotnet-self-contained-runtime-identifier: linux
     build-packages:
       - dotnet-sdk-8.0
     stage-packages:
