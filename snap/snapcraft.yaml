@@ -1,11 +1,23 @@
 name: slack-send
 adopt-info: slack-send
 base: core24
-version: '1.1.1'
+#version: '1.1.1'
 summary: Command line tool to send messages to Slack channels
 description: SlackSend is a CLI tool to send slack messages.
-grade: devel
-confinement: devmode
+grade: stable
+confinement: strict
+architectures:
+  - build-on: amd64
+    run-on: [amd64]
+#  - build-on: arm64
+#    run-on: [arm64]
+#  - build-on: i386
+#    run-on: [i386]
+apps:
+  slack-send:
+    command: bin/slack-send
+    plugs: [home, network]
+
 icon: slack.channel.png
 type: app
 title: SlackSend
@@ -30,21 +42,30 @@ build-base: core24
 parts:
   slack-send-linux-x64:
     plugin: dotnet
-    source: .
+    source: https://github.com/cavecafe/slack-send.git
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags)"
     dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
       - dotnet-sdk-8.0
   slack-send-osx-arm64:
     plugin: dotnet
-    source: .
+    source: https://github.com/cavecafe/slack-send.git
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags)"
     dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: osx-arm64
     build-packages:
       - dotnet-sdk-8.0
 #  slack-send-osx-x64:
 #    plugin: dotnet
-#    source: .
+#    source: https://github.com/cavecafe/slack-send.git
+#    override-pull: |
+#      snapcraftctl pull
+#      snapcraftctl set-version "$(git describe --tags)"
 #    dotnet-build-configuration: Release
 #    dotnet-self-contained-runtime-identifier: osx-x64
 #    build-packages:
@@ -56,10 +77,13 @@ parts:
 #    dotnet-self-contained-runtime-identifier: win-arm64
 #    build-packages:
 #      - dotnet-sdk-8.0
-  slack-send-win-x64:
-    plugin: dotnet
-    source: .
-    dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: win-x64
-    build-packages:
-      - dotnet-sdk-8.0
+#  slack-send-win-x64:
+#    plugin: dotnet
+#    source: https://github.com/cavecafe/slack-send.git
+#    override-pull: |
+#      snapcraftctl pull
+#      snapcraftctl set-version "$(git describe --tags)"
+#    dotnet-build-configuration: Release
+#    dotnet-self-contained-runtime-identifier: win-x64
+#    build-packages:
+#      - dotnet-sdk-8.0
