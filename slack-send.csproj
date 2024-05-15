@@ -25,6 +25,7 @@
     <FileVersion>100</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <DefaultLanguage>en</DefaultLanguage>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
   <ItemGroup>
