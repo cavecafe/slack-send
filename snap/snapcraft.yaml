@@ -6,13 +6,10 @@ summary: Command line tool to send messages to Slack channels
 description: SlackSend is a CLI tool to send slack messages.
 grade: stable
 confinement: strict
-architectures:
-  - build-on: amd64
-  - build-on: arm64
 apps:
   slack-send:
     command: bin/slack-send
-    plugs: [home, network]
+    plugs: [ home, network ]
 
 icon: slack.channel.png
 type: app
