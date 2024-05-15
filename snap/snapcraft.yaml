@@ -33,31 +33,32 @@ plugs:
 compression: lzo
 build-base: core24
 parts:
-  slack-send-dll-only:
-    plugin: dotnet
-    source: https://github.com/cavecafe/slack-send.git
-    #    override-pull: |
-    #      snapcraftctl pull
-    #      snapcraftctl set-version "$(git describe --tags)"
-    #    override-build:
-    #      apt-get install -y liblttng-ust0
-    #      snapcraftctl build
-    dotnet-build-configuration: Release
-    build-packages:
-      - dotnet-sdk-8.0
-#  slack-send-linux-x64:
+#  slack-send-dll-only:
 #    plugin: dotnet
 #    source: https://github.com/cavecafe/slack-send.git
+#    #    override-pull: |
+#    #      snapcraftctl pull
+#    #      snapcraftctl set-version "$(git describe --tags)"
+#    #    override-build:
+#    #      apt-get install -y liblttng-ust0
+#    #      snapcraftctl build
+#    dotnet-build-configuration: Release
+#    # dotnet-self-contained-runtime-identifier: linux-x64
+#    build-packages:
+#      - dotnet-sdk-8.0
+  slack-send-linux-x64:
+    plugin: dotnet
+    source: https://github.com/cavecafe/slack-send.git
 #    override-pull: |
 #      snapcraftctl pull
 #      snapcraftctl set-version "$(git describe --tags)"
 #    override-build:
 #      apt-get install -y liblttng-ust0
 #      snapcraftctl build
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: linux-x64
-#    build-packages:
-#      - dotnet-sdk-8.0
+    dotnet-build-configuration: Release
+    dotnet-self-contained-runtime-identifier: linux-x64
+    build-packages:
+      - dotnet-sdk-8.0
 #  slack-send-osx-arm64:
 #    plugin: dotnet
 #    source: https://github.com/cavecafe/slack-send.git
