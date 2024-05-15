@@ -8,7 +8,7 @@ grade: stable
 confinement: strict
 apps:
   slack-send:
-    command: bin/slack-send
+    command: $SNAP/usr/local/bin/slack-send
     plugs: [ home, network ]
 
 icon: slack.channel.png
