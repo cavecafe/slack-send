@@ -8,7 +8,7 @@ grade: stable
 confinement: strict
 apps:
   slack-send:
-    command: $SNAP/usr/share/dotnet $SNAP/slack-send.dll
+    command: $SNAP/usr/bin/dotnet slack-send.dll
     plugs: [ home, network ]
 
 icon: slack.channel.png
