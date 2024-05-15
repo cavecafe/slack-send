@@ -8,19 +8,6 @@ if (fullPath != null)
     var slack = new SlackClient(fullPath);
     if (slack is { Settings: not null })
     {
-        // for Debugging
-        // args = [ 
-        //     "--channels", "build", 
-        //     "--desc", "test description",
-        //     "--title", "test title",
-        //     "--message", "test message", 
-        //     "--status", "warning"
-        // ];
-        // args = [
-        //     "-c", "build",
-        //     "-m", "Hello My Slack Channel!",
-        // ];
-
         var parser = new Parser(with =>
         {
             with.EnableDashDash = true;

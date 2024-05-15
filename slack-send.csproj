@@ -22,6 +22,8 @@
     <AssemblyVersion>1.1.1</AssemblyVersion>
     <PackageProjectUrl>https://github.com/cavecafe/slack-send/blob/main/README.md</PackageProjectUrl>
     <Version>1.1.1</Version>
+    <FileVersion>100</FileVersion>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
