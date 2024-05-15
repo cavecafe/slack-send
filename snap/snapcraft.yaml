@@ -39,9 +39,9 @@ parts:
 #    override-pull: |
 #      snapcraftctl pull
 #      snapcraftctl set-version "$(git describe --tags)"
-    override-build:
-      apt-get install -y liblttng-ust0
-      snapcraftctl build
+#    override-build:
+#      apt-get install -y liblttng-ust0
+#      snapcraftctl build
     dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:

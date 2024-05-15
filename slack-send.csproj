@@ -24,6 +24,7 @@
     <Version>1.1.1</Version>
     <FileVersion>100</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
+    <DefaultLanguage>en</DefaultLanguage>
   </PropertyGroup>
 
   <ItemGroup>
