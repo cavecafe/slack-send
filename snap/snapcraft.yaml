@@ -36,9 +36,9 @@ parts:
   slack-send-linux-x64:
     plugin: dotnet
     source: https://github.com/cavecafe/slack-send.git
-    override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags)"
+#    override-pull: |
+#      snapcraftctl pull
+#      snapcraftctl set-version "$(git describe --tags)"
     dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
@@ -46,9 +46,9 @@ parts:
   slack-send-osx-arm64:
     plugin: dotnet
     source: https://github.com/cavecafe/slack-send.git
-    override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags)"
+#    override-pull: |
+#      snapcraftctl pull
+#      snapcraftctl set-version "$(git describe --tags)"
     dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: osx-arm64
     build-packages:
