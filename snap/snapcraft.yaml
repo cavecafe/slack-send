@@ -23,7 +23,7 @@ environment:
 source-code: https://github.com/cavecafe/slack-send
 build-packages:
   - dotnet-sdk-8.0
-  - liblttng-ust1
+  - liblttng-ust0
 plugs:
   home:
     interface: personal-files
