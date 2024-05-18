@@ -24,10 +24,6 @@ confinement: strict
 #  slack-send:
 #    command: $SNAP/usr/bin/dotnet slack-send.dll
 #    plugs: [ home, network ]
-apps:
-  slack-send:
-    command: dotnet $SNAP/slack-send.dll
-    plugs: [ home, network ]
 
 # (TODO) Modify this with proper image
 icon: slack.channel.png
@@ -79,6 +75,9 @@ parts:
     dotnet-self-contained-runtime-identifier: linux-x64
     build-packages:
       - dotnet-sdk-8.0
+    install: |
+      mkdir -p $CRAFT_PART_INSTALL/bin
+      cp -r $CRAFT_PART_BUILD/bin/Release/net8.0/linux-x64/publish/* $CRAFT_PART_INSTALL/bin
 #  slack-send-osx-arm64:
 #    plugin: dotnet
 #    source: https://github.com/cavecafe/slack-send.git
