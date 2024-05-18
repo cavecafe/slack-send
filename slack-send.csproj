@@ -12,7 +12,7 @@
     <Description>A simple utility to send a Slack message using Slack Web API to your channels.</Description>
     <Copyright>cavecafe</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon>slack.channel.png</PackageIcon>
+    <PackageIcon>slack-send.png</PackageIcon>
     <RepositoryUrl>https://github.com/cavecafe/slack-send</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>slack;send;channel;message;utility</PackageTags>
@@ -52,7 +52,7 @@
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="slack.channel.png">
+    <None Update="slack-send.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

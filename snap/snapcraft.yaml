@@ -16,7 +16,7 @@ apps:
     plugs: [ home, network ]
 
 # (TODO) Modify this with proper image
-icon: slack.channel.png
+icon: slack-send.png
 type: app
 title: SlackSend
 issues: https://github.com/cavecafe/slack-send/issues
