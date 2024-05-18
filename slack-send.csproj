@@ -76,7 +76,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="./versin.sh" />
+    <Exec Command="./version.sh" />
   </Target>
 
 </Project>
