@@ -22,7 +22,7 @@ confinement: strict
 
 apps:
   slack-send:
-    command: $CRAFT_PART_INSTALL/bin/slack-send
+    command: slack-send
     plugs: [ home, network ]
 
 # (TODO) Modify this with proper image
