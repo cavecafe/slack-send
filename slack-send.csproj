@@ -4,6 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>SlackSend</RootNamespace>
+    <SelfContained>True</SelfContained>
+    <PublishSingleFile>True</PublishSingleFile>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>Slack Send</Title>
@@ -19,13 +21,13 @@
     <Authors>cavecafe</Authors>
     <Company>cavecafe.cc</Company>
     <LangVersion>12</LangVersion>
-    <AssemblyVersion>1.1.1</AssemblyVersion>
     <PackageProjectUrl>https://github.com/cavecafe/slack-send/blob/main/README.md</PackageProjectUrl>
     <Version>1.1.1</Version>
     <FileVersion>100</FileVersion>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <DefaultLanguage>en</DefaultLanguage>
-    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantGlobalization>True</InvariantGlobalization>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
