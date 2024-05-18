@@ -10,16 +10,6 @@ description: SlackSend is a CLI tool to send slack messages.
 grade: stable
 confinement: strict
 
-# (TODO) How to use my package as other CLI 
-# like `slack-send` in any directory 
-# after 'snap install slack-send' symlink?
-
-# (TODO) Should I make as self-contained build 
-# or call 'dotnet slack-send.dll' with dotnet install? 
-
-# (TODO) Add proper icon and video with console recorder
-# in the snapcraft.io page
-
 apps:
   slack-send:
     command: slack-send
@@ -27,7 +17,6 @@ apps:
 
 # (TODO) Modify this with proper image
 icon: slack.channel.png
-
 type: app
 title: SlackSend
 issues: https://github.com/cavecafe/slack-send/issues
@@ -49,19 +38,6 @@ plugs:
 compression: lzo
 build-base: core24
 parts:
-#  slack-send-dll-only:
-#    plugin: dotnet
-#    source: https://github.com/cavecafe/slack-send.git
-#    #    override-pull: |
-#    #      snapcraftctl pull
-#    #      snapcraftctl set-version "$(git describe --tags)"
-#    #    override-build:
-#    #      apt-get install -y liblttng-ust0
-#    #      snapcraftctl build
-#    dotnet-build-configuration: Release
-#    # dotnet-self-contained-runtime-identifier: linux-x64
-#    build-packages:
-#      - dotnet-sdk-8.0
   slack-send-linux-x64:
     plugin: dotnet
     source: https://github.com/cavecafe/slack-send.git
@@ -70,52 +46,3 @@ parts:
     build-packages:
       - dotnet-sdk-8.0
       - liblttng-ust1
-#    override-pull: |
-#      snapcraftctl pull
-#      snapcraftctl set-version "$(git describe --tags)"
-#    override-build:
-#      apt-get install -y liblttng-ust0
-#      snapcraftctl build
-    dotnet-build-configuration: Release
-    dotnet-self-contained-runtime-identifier: linux-x64
-
-#    install: |
-#      mkdir -p $CRAFT_PART_INSTALL/bin
-#      cp -r $CRAFT_PART_BUILD/bin/Release/net8.0/linux-x64/publish/* $CRAFT_PART_INSTALL/bin
-#  slack-send-osx-arm64:
-#    plugin: dotnet
-#    source: https://github.com/cavecafe/slack-send.git
-##    override-pull: |
-##      snapcraftctl pull
-##      snapcraftctl set-version "$(git describe --tags)"
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: osx-arm64
-#    build-packages:
-#      - dotnet-sdk-8.0
-#  slack-send-osx-x64:
-#    plugin: dotnet
-#    source: https://github.com/cavecafe/slack-send.git
-#    override-pull: |
-#      snapcraftctl pull
-#      snapcraftctl set-version "$(git describe --tags)"
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: osx-x64
-#    build-packages:
-#      - dotnet-sdk-8.0
-#  slack-send-win-arm64:
-#    plugin: dotnet
-#    source: .
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: win-arm64
-#    build-packages:
-#      - dotnet-sdk-8.0
-#  slack-send-win-x64:
-#    plugin: dotnet
-#    source: https://github.com/cavecafe/slack-send.git
-#    override-pull: |
-#      snapcraftctl pull
-#      snapcraftctl set-version "$(git describe --tags)"
-#    dotnet-build-configuration: Release
-#    dotnet-self-contained-runtime-identifier: win-x64
-#    build-packages:
-#      - dotnet-sdk-8.0
