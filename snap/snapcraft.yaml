@@ -65,6 +65,11 @@ parts:
   slack-send-linux-x64:
     plugin: dotnet
     source: https://github.com/cavecafe/slack-send.git
+    source-branch: main
+    # source-tag: snap-store
+    build-packages:
+      - dotnet-sdk-8.0
+      - liblttng-ust1
 #    override-pull: |
 #      snapcraftctl pull
 #      snapcraftctl set-version "$(git describe --tags)"
@@ -73,8 +78,7 @@ parts:
 #      snapcraftctl build
     dotnet-build-configuration: Release
     dotnet-self-contained-runtime-identifier: linux-x64
-    build-packages:
-      - dotnet-sdk-8.0
+
     install: |
       mkdir -p $CRAFT_PART_INSTALL/bin
       cp -r $CRAFT_PART_BUILD/bin/Release/net8.0/linux-x64/publish/* $CRAFT_PART_INSTALL/bin
