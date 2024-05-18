@@ -26,7 +26,7 @@ confinement: strict
 #    plugs: [ home, network ]
 apps:
   slack-send:
-    command: $SNAP/bin/slack-send
+    command: dotnet $SNAP/slack-send.dll
     plugs: [ home, network ]
 
 # (TODO) Modify this with proper image
