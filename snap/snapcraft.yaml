@@ -26,7 +26,7 @@ confinement: strict
 #    plugs: [ home, network ]
 apps:
   slack-send:
-    command: /snap/bin/slack-send
+    command: $SNAP/bin/slack-send
     plugs: [ home, network ]
 
 # (TODO) Modify this with proper image
