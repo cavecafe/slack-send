@@ -28,6 +28,7 @@
     <NeutralLanguage>en</NeutralLanguage>
     <DefaultLanguage>en</DefaultLanguage>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <TargetCulture>en-US</TargetCulture>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
