@@ -76,7 +76,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="perl -i -pe 's/(BuildNumber\(&quot;)(\d+)(&quot;\))/ $1.($2+1).$3 /e' AssemblyInfo.cs" />
+    <Exec Command="./versin.sh" />
   </Target>
 
 </Project>

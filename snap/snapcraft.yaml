@@ -1,17 +1,37 @@
 name: slack-send
 adopt-info: slack-send
 base: core24
+# version.sh will be used to get the version 
+# to replace the version in the snapcraft.yaml
 version: '1.1.1'
+
 summary: Command line tool to send messages to Slack channels
 description: SlackSend is a CLI tool to send slack messages.
 grade: stable
 confinement: strict
+
+# (TODO) How to use my package as other CLI 
+# like `slack-send` in any directory 
+# after 'snap install slack-send' symlink?
+
+# (TODO) Should I make as self-contained build 
+# or call 'dotnet slack-send.dll' with dotnet install? 
+
+# (TODO) Add proper icon and video with console recorder
+# in the snapcraft.io page
+
 #apps:
 #  slack-send:
 #    command: $SNAP/usr/bin/dotnet slack-send.dll
 #    plugs: [ home, network ]
+apps:
+  slack-send:
+    command: /snap/bin/slack-send
+    plugs: [ home, network ]
 
+# (TODO) Modify this with proper image
 icon: slack.channel.png
+
 type: app
 title: SlackSend
 issues: https://github.com/cavecafe/slack-send/issues
