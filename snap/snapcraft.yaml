@@ -38,12 +38,10 @@ plugs:
 compression: lzo
 build-base: core24
 architectures:
-  - build-on: amd64
-    run-on: amd64
-  - build-on: arm64
-    run-on: arm64
+  - amd64
+  - arm64
 parts:
-  slack-send-linux-x64:
+  slack-send-src:
     plugin: dotnet
     source: https://github.com/cavecafe/slack-send.git
     source-branch: main
