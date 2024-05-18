@@ -1,6 +1,7 @@
 # slack-send
 A simple utility to send a Slack message using Slack Web API to your channels
 
+[slack-send](slack-send.png)
 
 ### Usage
 
