@@ -16,3 +16,7 @@ snapcraft_content=$(cat snap/snapcraft.yaml)
 updated_content=$(echo "$snapcraft_content" | sed "s/version: .*/version: $formatted_version/")
 echo "$updated_content" > snap/snapcraft.yaml
 echo Package Version="$version"
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8

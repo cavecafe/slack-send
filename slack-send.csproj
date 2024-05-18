@@ -27,7 +27,6 @@
     <DefaultLanguage>en</DefaultLanguage>
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
