@@ -79,19 +79,19 @@ public class Attachment
     {
         { "warning", "#ffa500" },
         { "error", "#ff0000" },
-        { "good", "#36a64f" }
+        { Options.DefaultStatus, "#36a64f" }
     };
     
     public string color
-    { get; set; } = PreDefinedColors["good"];
+    { get; set; } = PreDefinedColors[Options.DefaultStatus];
     
-    public string pretext { get; set; } = "my message description";
-    public string author_name { get; set; } = "slack-send";
+    public string pretext { get; set; } = Options.DefaultDescription;
+    public string author_name { get; set; } = Options.DefaultAuthor;
     public string author_link { get; set; } = "https://snapcraft.io/slack-send/listing";
     public string author_icon { get; set; } = "https://dashboard.snapcraft.io/site_media/appmedia/2024/05/slack-send.png";
-    public string title { get; set; } = "my title";
+    public string title { get; set; } = Options.DefaultTitle;
     public string title_link { get; set; } = "https://api.slack.com/";
-    public string text { get; set; } = "my message body";
+    public string text { get; set; } = Options.DefaultMessage;
     public List<Field>? fields { get; set; } = new();
     public string thumb_url { get; set; } = "";
     public string footer { get; set; } = "";
@@ -101,8 +101,8 @@ public class Attachment
 
 public class Field
 {
-    public string title { get; set; } = "my field title";
-    public string value { get; set; } = "my field value";
+    public string title { get; set; } = Options.DefaultFieldTitle;
+    public string value { get; set; } = Options.DefaultFieldValue;
     public bool @short { get; set; }
 }
 
@@ -158,25 +158,25 @@ public class SlackClient : HttpClient
                 Console.WriteLine();
                 if (key.Key == ConsoleKey.Y)
                 {
-                    Console.Write(@"Channel Name [default: general]:");
+                    Console.Write($@"Channel name [default: {Options.DefaultChannels}]:");
                     var channel = Console.ReadLine();
-                    channel = string.IsNullOrWhiteSpace(channel) ? "general" : channel;
+                    channel = string.IsNullOrWhiteSpace(channel) ? Options.DefaultChannels : channel;
                     
-                    Console.Write(@"Slack message title [default: Hello]: ");
+                    Console.Write($@"Slack message title [default: {Options.DefaultTitle}]: ");
                     var title = Console.ReadLine();
-                    title = string.IsNullOrWhiteSpace(title) ? "Hello" : title;
+                    title = string.IsNullOrWhiteSpace(title) ? Options.DefaultTitle : title;
                     
-                    Console.Write(@"Slack message body [default: Hi all]: ");
+                    Console.Write($@"Slack message body [default: {Options.DefaultMessage}]: ");
                     var message = Console.ReadLine();
-                    message = string.IsNullOrWhiteSpace(message) ? "Hi all" : message;
+                    message = string.IsNullOrWhiteSpace(message) ? Options.DefaultMessage : message;
                     
-                    Console.Write(@"Slack message description [Default: test]: ");
+                    Console.Write($@"Slack message description [default: {Options.DefaultDescription}]: ");
                     var description = Console.ReadLine();
-                    description = string.IsNullOrWhiteSpace(description) ? "test" : description;
+                    description = string.IsNullOrWhiteSpace(description) ? Options.DefaultDescription : description;
                     
-                    Console.Write(@"Sender name [default: slack-send]: ");
+                    Console.Write($@"Sender name [default: {Options.DefaultAuthor}]: ");
                     var senderName = Console.ReadLine();
-                    senderName = string.IsNullOrWhiteSpace(senderName) ? "slack-send" : senderName;
+                    senderName = string.IsNullOrWhiteSpace(senderName) ? Options.DefaultAuthor : senderName;
                     
                     Console.Write(@"Slack API token:");
                     var token = Console.ReadLine();
