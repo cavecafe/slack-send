@@ -45,10 +45,10 @@ architectures:
     build-for: amd64
   - build-on: arm64
     build-for: arm64
-  - build-on: armhf
-    build-for: armhf
-  - build-on: riscv64
-    build-for: riscv64
+#  - build-on: armhf
+#    build-for: armhf
+#  - build-on: riscv64
+#    build-for: riscv64
 
 # for core24 and later
 # noinspection YAMLSchemaValidation
@@ -74,7 +74,7 @@ parts:
     #source-tag: snap-store
     build-packages:
       - dotnet-sdk-8.0
-      - liblttng-ust1
+#      - liblttng-ust1
 
 # for semantic versioning 
 #    override-stage: |
