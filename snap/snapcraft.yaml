@@ -25,7 +25,7 @@ website: https://github.com/cavecafe/slack-send
 license: MIT
 environment:
   DOTNET_ROOT: $SNAP/usr/share/dotnet
-  CRAFT_ARCH_TARGET_BUILD_FOR: "amd64,arm64,armhf,riscv64"
+  #CRAFT_ARCH_TARGET_BUILD_FOR: "amd64,arm64,armhf,riscv64"
 source-code: https://github.com/cavecafe/slack-send
 build-packages:
   - dotnet-sdk-8.0
@@ -42,13 +42,9 @@ build-base: core22
 # for core22
 architectures:
   - build-on: amd64
-    build-for: amd64
   - build-on: arm64
-    build-for: arm64
 #  - build-on: armhf
-#    build-for: armhf
 #  - build-on: riscv64
-#    build-for: riscv64
 
 # for core24 and later
 # noinspection YAMLSchemaValidation
