@@ -24,11 +24,18 @@
     <PackageProjectUrl>https://github.com/cavecafe/slack-send/blob/main/README.md</PackageProjectUrl>
     <Version>1.1.1</Version>
     <FileVersion>100</FileVersion>
-    <AssemblyVersion>1.1.1</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <DefaultLanguage>en</DefaultLanguage>
     <InvariantGlobalization>true</InvariantGlobalization>
     <TargetCulture>en-US</TargetCulture>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin/Debug/net8.0/osx-arm64/</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin/Release/net8.0/osx-arm64/</OutputPath>
   </PropertyGroup>
   
   <ItemGroup>
@@ -56,9 +63,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="slack-send.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="slack-send-example.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

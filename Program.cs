@@ -14,6 +14,7 @@ if (fullPath != null)
             with.AutoHelp = true;
             with.HelpWriter = Console.Out;
         });
+        
         var parserResult = parser.ParseArguments<Options>(args);
         parserResult.WithNotParsed(_ => { });
         parserResult.WithParsed(args =>

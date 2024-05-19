@@ -1,19 +1,13 @@
 #!/bin/bash
 
 #########################################################
-# Increase Build Number in AssemblyInfo.cs file
-# This script increases the build number in the AssemblyInfo.cs file
-# by 1. The AssemblyInfo.cs file is located in the Properties folder
-perl -i -pe 's/(BuildNumber\(&quot;)(\d+)(&quot;\))/ $1.($2+1).$3 /e' AssemblyInfo.cs
-echo "Build #"| grep -oPm1 "(?<=BuildNumber\(&quot;)[^&]+(?=&quot;\))" AssemblyInfo.cs
-
-#########################################################
 # Replace the Package version in the snapcraft.yaml file 
 # with the value in the project file
-version=$(grep -oPm1 "(?<=<Version>)[^<]+" slack-send.csproj)
-formatted_version="'$version'"
+version=$(sed -n 's/.*<Version>\(.*\)<\/Version>.*/\1/p' slack-send.csproj)
+echo "Version in Project: '$version', Updating snapcraft.yaml"
 snapcraft_content=$(cat snap/snapcraft.yaml)
-updated_content=$(echo "$snapcraft_content" | sed "s/version: .*/version: $formatted_version/")
+# shellcheck disable=SC2001
+updated_content=$(echo "$snapcraft_content" | sed "s/version: .*/version: $version/")
 echo "$updated_content" > snap/snapcraft.yaml
 echo Package Version="$version"
 

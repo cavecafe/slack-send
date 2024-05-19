@@ -18,7 +18,7 @@ public class Options
     [Option('t', "title", Required = false, Default = "", HelpText = "title to send")]
     public string? Title { get; set; } = "";
     
-    [Option('m', "message", Required = true, HelpText = "message to send")]
+    [Option('m', "message", Required = false, HelpText = "message to send")]
     public string? Message { get; set; } = "";
 
     [Option('s', "status", Required = false, Default = "good", HelpText = "Status good | warning | error, default is good")]

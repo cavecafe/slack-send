@@ -7,8 +7,8 @@ namespace SlackSend;
 public class SlackConfiguration
 {
     public string? ApiToken { get; init; }
-    public string? ApiUrl { get; init; }
-    public string[]? Channels { get; set; }
+    public string ApiUrl { get; init; } = "https://slack.com/api/chat.postMessage";
+    public string?[]? Channels { get; set; }
     public Attachment[]? Attachments { get; set; }
     public static string? FileName { get; set; }
 
@@ -63,7 +63,7 @@ public class SlackConfiguration
         if (!string.IsNullOrWhiteSpace(options.Json))
         {
             var json = JsonSerializer.Deserialize<MessageRequest>(options.Json);
-            Channels = json?.channel.Split(';');
+            Channels = json?.channel?.Split(';');
             Attachments = json?.attachments;
         }
     }
@@ -80,37 +80,37 @@ public class Attachment
         { "good", "#36a64f" }
     };
     
-    private string _color = colors["good"];
+    private string _rgbColor = colors["good"];
     public string? color
     {
-        get => _color;
-        set => _color = value is not null ? colors[value] : colors["good"];
+        get => colors[_rgbColor];
+        set => _rgbColor = value is not null ? colors[value] : colors["good"];
     }
 
-    public string? pretext { get; set; } = "";
-    public string? author_name { get; set; } = "";
-    public string? author_link { get; set; } = "";
-    public string? author_icon { get; set; } = "";
-    public string? title { get; set; } = "";
-    public string? title_link { get; set; } = "";
-    public string? text { get; set; } = "";
+    public string? pretext { get; set; } = "my message description";
+    public string? author_name { get; set; } = "slack-send";
+    public string? author_link { get; set; } = "https://snapcraft.io/slack-send/listing";
+    public string? author_icon { get; set; } = "https://dashboard.snapcraft.io/site_media/appmedia/2024/05/slack-send.png";
+    public string? title { get; set; } = "my title";
+    public string? title_link { get; set; } = "https://api.slack.com/";
+    public string? text { get; set; } = "my message body";
     public List<Field>? fields { get; set; } = new();
     public string? thumb_url { get; set; } = "";
     public string? footer { get; set; } = "";
     public string? footer_icon { get; set; } = "";
-    public int ts { get; set; } = 0;
+    public int ts { get; set; }
 }
 
 public class Field
 {
-    public string? title { get; set; }
-    public string? value { get; set; }
-    public bool @short { get; set; }
+    public string? title { get; set; } = "my field title";
+    public string? value { get; set; } = "my field value";
+    public bool @short { get; set; } = false;
 }
 
 public class MessageRequest
 {
-    public required string channel { get; init; }
+    public required string? channel { get; init; }
     public required Attachment[]? attachments { get; init; }
     public bool as_user { get; init; }
 }
@@ -131,9 +131,10 @@ public class SlackClient : HttpClient
     {
         var fileName = Path.GetFileName(runPath);
         var assemblyName = Path.GetFileNameWithoutExtension(fileName);
-        if (!Init(runPath, assemblyName))
+        var userHome = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        if (!Init(userHome, assemblyName))
         {
-            Console.Error.WriteLine($"Failed to initialize SlackClient, please check the {assemblyName}.json file");
+            Console.Error.WriteLine($"Failed to initialize SlackClient.\nPlease check the {userHome}/.{assemblyName} file");
             Environment.Exit(1);
         }
     }
@@ -142,11 +143,60 @@ public class SlackClient : HttpClient
         bool ret = false;
         try
         {
-            SlackConfiguration.FileName = $"{assemblyName}.json";
-            string dir = Path.GetDirectoryName(path)!;
-            string json = File.ReadAllText(Path.Combine(dir, SlackConfiguration.FileName));
-            Settings = JsonSerializer.Deserialize<SlackConfiguration>(json);
-            ret = Settings != null;
+            SlackConfiguration.FileName = $".{assemblyName}";
+            var configPath = Path.Combine(path, SlackConfiguration.FileName);
+            if (File.Exists(configPath))
+            {
+                string json = File.ReadAllText(configPath);
+                Settings = JsonSerializer.Deserialize<SlackConfiguration>(json);
+                ret = Settings != null;
+            }
+            else
+            {
+                Console.Error.Write(
+                    $"The configuration file '{configPath}' does not exist, \ndo you want to create it? [y/n]");
+                var key = Console.ReadKey();
+                Console.WriteLine();
+                if (key.Key == ConsoleKey.Y)
+                {
+                    Console.Write(@"Channel Name [default: general]:");
+                    var channel = Console.ReadLine() ?? "general";
+                    Console.Write(@"Slack message title [default: Hello]: ");
+                    var title = Console.ReadLine() ?? "Hello";
+                    Console.Write(@"Slack message body [default: Hi all]: ");
+                    var message = Console.ReadLine() ?? "Hi all";
+                    Console.Write(@"Slack message description [Default: test]: ");
+                    var description = Console.ReadLine() ?? "test";
+                    Console.Write(@"Sender name [default: slack-send]: ");
+                    var senderName = Console.ReadLine() ?? "slack-send";
+                    
+                    Console.Write(@"Slack API token:");
+                    var token = Console.ReadLine();
+
+                    Settings = new SlackConfiguration
+                    {
+                        ApiToken = token,
+                        Channels = [channel],
+                        Attachments = [ 
+                            new()
+                            {
+                                pretext = description,
+                                title = title,
+                                author_name = senderName,
+                                text = message,
+                                ts = (int)DateTimeOffset.Now.ToUnixTimeSeconds(),
+                                fields = new List<Field> { new() },
+                                mrkdwn_in = new List<string> { "text" }
+                            }
+                        ]
+                    };
+
+                    var json = JsonSerializer.Serialize(Settings, new JsonSerializerOptions() { WriteIndented = true });
+                    File.WriteAllText(configPath, json);
+                    Console.WriteLine($@"The configuration file '{configPath}' has been created.");
+                    ret = true;
+                }
+            }
         }
         catch (Exception e)
         {
