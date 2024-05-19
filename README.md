@@ -1,20 +1,22 @@
 # slack-send
 A simple utility to send a Slack message using Slack Web API to your channels
 
-[slack-send](slack-send.png)
+![slack-send](https://github.com/cavecafe/slack-send/blob/main/slack-send.png?raw=true)
+
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/slack-send)
 
 ### Usage
 
 ```bash
 slack-send --help
 
-  -h, --help        (Default: false) Prints this help message.
-  -c, --channels    (Default: empty) Slack channels to send message, separated by ';', default is empty, which means use the channels in the configuration file.
-  -d, --desc        (Default: empty) description on the top of the message
-  -t, --title       (Default: empty) title to send
-  -m, --message     Required. message to send
-  -s, --status      (Default: good) Status good | warning | error, default is good
-  -j, --json        (Default: empty) JSON formated Slack message (https://api.slack.com/reference/messaging/attachments), it overrides the message and status options, if those values exist on JSON.
+  -h, --help        (default: false) Prints this help message.
+  -c, --channels    (default: 'general') Slack channels to send message, separated by ';', default is empty, which means use the channels in the configuration file.
+  -d, --desc        (default: 'my description') description on the top of the message
+  -t, --title       (default: 'my title') title to send
+  -m, --message     (default: 'message to send') message body to send
+  -s, --status      (default: 'good') Status good | warning | error, default is good
+  -j, --json        (default: empty) JSON formated Slack message (https://api.slack.com/reference/messaging/attachments), it overrides the message and status options, if those values exist on JSON.
   --help            Display this help screen.
   --version         Display version information.
 ```
@@ -125,4 +127,3 @@ Example:
 - https://api.slack.com/messaging/sending#publishing
 - https://api.slack.com/methods/chat.postMessage
 - https://api.slack.com/docs/message-attachments
-
