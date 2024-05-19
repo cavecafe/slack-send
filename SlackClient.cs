@@ -1,6 +1,7 @@
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace SlackSend;
 
@@ -102,7 +103,7 @@ public class Field
 {
     public string title { get; set; } = "my field title";
     public string value { get; set; } = "my field value";
-    public bool @short { get; set; } = false;
+    public bool @short { get; set; }
 }
 
 public class MessageRequest
@@ -111,7 +112,7 @@ public class MessageRequest
     public required Attachment[]? attachments { get; init; }
     public bool as_user { get; init; }
 }
-    
+
 public class MessageResponse
 {
     public bool ok { get; init; }
@@ -135,6 +136,7 @@ public class SlackClient : HttpClient
             Environment.Exit(1);
         }
     }
+
     private bool Init(string path, string? assemblyName)
     {
         bool ret = false;
@@ -197,7 +199,10 @@ public class SlackClient : HttpClient
                         ]
                     };
 
-                    var json = JsonSerializer.Serialize(Settings, new JsonSerializerOptions() { WriteIndented = true });
+                    var json = JsonSerializer.Serialize(Settings, new JsonSerializerOptions
+                    {
+                        WriteIndented = true,
+                    });
                     File.WriteAllText(configPath, json);
                     Console.WriteLine($@"The configuration file '{configPath}' has been created.");
                     ret = true;
@@ -216,7 +221,10 @@ public class SlackClient : HttpClient
     {
         bool ret = false;
         string details = string.Empty;
-        var content = JsonSerializer.Serialize(req, typeof(MessageRequest));
+        var content = JsonSerializer.Serialize(req, new JsonSerializerOptions
+        {
+            WriteIndented = true
+        });
         var post = new StringContent(
             content,
             Encoding.UTF8,

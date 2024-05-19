@@ -25,7 +25,7 @@ if (fullPath != null)
                     channels += channel + ";";
                 }
                 channels = channels.TrimEnd(';');
-                args = new[] { "-c", channels };
+                args = ["-c", channels];
             }
         }
         var parserResult = parser.ParseArguments<Options>(args);
