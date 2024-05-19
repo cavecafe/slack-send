@@ -7,13 +7,13 @@ A simple utility to send a Slack message using Slack Web API to your channels
 ```bash
 > sudo snap install slack-send
 ```
-or 
+#### or
 
 (https://snapcraft.io/slack-send)
 
 ![Get it from the Snap Store](https://raw.githubusercontent.com/cavecafe/slack-send/main/snap/snap-store-white.svg)
 
-or 
+#### or
 
 ```bash
 # use it in your project directly
@@ -77,7 +77,8 @@ You can also update the ~/.slack-send to set the default values for the message,
   - `ApiUrl`: The Slack API URL for sending messages.
   - `Channels`: An array of channel names to send the message to.
   - `Attachments`: An array of attachments to send with the message. The format of the attachments is the same as the JSON format for attachments in the Slack API.
-Example:
+
+#### Example:
 ```json
 {
   "ApiToken": "<your Slack API Key for a bot, typically starts with 'xoxb-'>", 
@@ -96,7 +97,7 @@ Example:
 If you prefer to have fine control of your Slack message, you can use the Slack's own JSON format ([Attachments](https://api.slack.com/reference/messaging/attachments)) directly, which will override 
 the message and status options in '~/.slack-send'.
 
-Example:
+#### Example:
 ```json
 {
     "channel": "ABCDEBF1",
