@@ -9,10 +9,12 @@ A simple utility to send a Slack message using Slack Web API to your channels
 ```
 or 
 
-[![Get it from the Snap Store](https://raw.githubusercontent.com/cavecafe/slack-send/main/snap/snap-store-white.svg)](https://snapcraft.io/slack-send)
+(https://snapcraft.io/slack-send)
+
+![Get it from the Snap Store](https://raw.githubusercontent.com/cavecafe/slack-send/main/snap/snap-store-white.svg)
 
 or 
-~~~~
+
 ```bash
 # use it in your project directly
 > dotnet add package slack-send
