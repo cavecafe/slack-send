@@ -26,7 +26,7 @@
     <Company>cavecafe.cc</Company>
     <LangVersion>12</LangVersion>
     <PackageProjectUrl>https://github.com/cavecafe/slack-send/blob/main/README.md</PackageProjectUrl>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <FileVersion>100</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <DefaultLanguage>en</DefaultLanguage>

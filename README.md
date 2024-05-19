@@ -3,7 +3,21 @@ A simple utility to send a Slack message using Slack Web API to your channels
 
 ![slack-send](https://github.com/cavecafe/slack-send/blob/main/slack-send.png?raw=true)
 
+### Installation
+```bash
+> sudo snap install slack-send
+```
+or 
+
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/slack-send)
+
+or 
+
+```bash
+# use it in your project directly
+> dotnet add package slack-send
+```
+
 
 ### Usage
 
@@ -23,38 +37,40 @@ slack-send --help
 
 ### Example
 ```bash
-slack-send -m <message> -c <channel>
-# slack-send -m "Hello, My Slack Channel!" -c "#general"
+# slack-send -m <message> -c <channel>
+> slack-send -m "Hello, My Slack Channel!" -c "general"
 ```
 
 #### or
 ```bash
-slack-send -m <message> -c <channel1>;<channel2> ...
-# slack-send -m "Hello, My Slack Channel!" -c "#general;#random"
+# slack-send -m <message> -c <channel1>;<channel2> ...
+> slack-send -m "Hello, My Slack Channel!" -c "general;random"
 ```
 
 #### or
 ```bash
-slack-send -d <description> -t <title> -m <message> -c <channel1>;<channel2> ...
-# slack-send -d "This is a description" -t "This is a title" -m "Hello, My Slack Channel!" -c "#general;#random"
+# slack-send -d <description> -t <title> -m <message> -c <channel1>;<channel2> ...
+> slack-send -d "This is a description" -t "This is a title" -m "Hello, My Slack Channel!" -c "general;random"
 ```
 
 #### or
 ```bash
-slack-send -d <description> -t <title> -m <message> -c <channel1>;<channel2> ... -j <json_string>
-# slack-send -d "This is a description" -t "This is a title" -m "Hello, My Slack Channel!" -c "#general;#random" -j "{\"color\":\"#36a64f\",\"pretext\":\"Optional pre-text that appears above the attachment block\",\"author_name\":\"author_name\",\"author_link\":\"https://flickr.com/bobby/\",\"author_icon\":\"https://placeimg.com/16/16/people\",\"title\":\"title\",\"title_link\":\"https://api.slack.com/\",\"text\":\"Optional `text` that appears within the attachment\",\"fields\":[{\"title\":\"A field's title\",\"value\":\"This field's value\",\"short\":false},{\"title\":\"A short field's title\",\"value\":\"A short field's value\",\"short\":true},{\"title\":\"A second short field's title\",\"value\":\"A second short field's value\",\"short\":true}],\"thumb_url\":\"https://placekitten.com/g/200/200\",\"footer\":\"footer\",\"footer_icon\":\"https://platform.slack-edge.com/img/default_application_icon.png\",\"ts\":123456789}"
+# slack-send -d <description> -t <title> -m <message> -c <channel1>;<channel2> ... -j <json_string>
+> slack-send -d "This is a description" -t "This is a title" \ 
+  -m "Hello, My Slack Channel!" \
+  -c "general;random" \ 
+  -j "{\"color\":\"#36a64f\",\"pretext\":\"Optional pre-text that appears above the attachment block\",\"author_name\":\"author_name\",\"author_link\":\"https://flickr.com/bobby/\",\"author_icon\":\"https://placeimg.com/16/16/people\",\"title\":\"title\",\"title_link\":\"https://api.slack.com/\",\"text\":\"Optional `text` that appears within the attachment\",\"fields\":[{\"title\":\"A field's title\",\"value\":\"This field's value\",\"short\":false},{\"title\":\"A short field's title\",\"value\":\"A short field's value\",\"short\":true},{\"title\":\"A second short field's title\",\"value\":\"A second short field's value\",\"short\":true}],\"thumb_url\":\"https://placekitten.com/g/200/200\",\"footer\":\"footer\",\"footer_icon\":\"https://platform.slack-edge.com/img/default_application_icon.png\",\"ts\":123456789}"
 ```
 
-![Message with JSON payload](images/message.png)
+#### Used with GitHub Actions events
+![Message with JSON payload](https://github.com/cavecafe/slack-send/blob/main/images/message.png?raw=true)
 
-## Pre-requisites
-- Create a [Slack App and get the API Key](https://api.slack.com/messaging/sending)
-- Create a configuration file `~/.slack-send` in the user's home directory.
-- Then run ./slack-send -m "Hello, My Slack Channel!" -c "#general"
+## Note
+- You need to acquire your [Slack API token](https://api.slack.com/messaging/sending) from Slack in order for slack-send to send messages to your Slack channels, typically starts with 'xoxb-'.
+- The configuration file `~/.slack-send` will be created when the app run first time to store your configuration.
 
-## Configuration JSON file (~/.slack-send)
-You can also use a configuration file to set the default values for the message, channel, and attachments.
-- The configuration file should be named `.slack-send` in user's home directory (`~/.slack-send`), which has the following keys:
+### Configuration file (~/.slack-send)
+You can also update the ~/.slack-send to set the default values for the message, channel, and attachments.
   - `ApiToken`: Your Slack API Key for a bot, typically starts with 'xoxb-'.
   - `ApiUrl`: The Slack API URL for sending messages.
   - `Channels`: An array of channel names to send the message to.
@@ -74,9 +90,9 @@ Example:
 }
 ```
 
-## 'Attachments' JSON Format
-If you prefer to have fine control of your Slack message, you can use the [native Slack Attachments JSON format](https://api.slack.com/reference/messaging/attachments) directly, which will override 
-the message and status options.
+### 'Attachments' JSON Format
+If you prefer to have fine control of your Slack message, you can use the Slack's own JSON format ([Attachments](https://api.slack.com/reference/messaging/attachments)) directly, which will override 
+the message and status options in '~/.slack-send'.
 
 Example:
 ```json
@@ -121,7 +137,7 @@ Example:
 }
 ```
 
-![Reference to Slack Web API](images/slack-api.png)
+![Reference to Slack Web API](https://github.com/cavecafe/slack-send/blob/main/images/slack-api.png?raw=true)
 
 ### Reference
 - https://api.slack.com/messaging/sending#publishing

@@ -3,7 +3,7 @@ adopt-info: slack-send
 base: core24
 # version.sh will be used to get the version 
 # to replace the version in the snapcraft.yaml
-version: 1.1.1
+version: 1.1.2
 
 summary: Command line tool to send messages to Slack channels
 description: SlackSend is a CLI tool to send slack messages.
