@@ -1,7 +1,7 @@
 # slack-send
 A simple utility to send a Slack message using Slack Web API to your channels
 
-![slack-send](https://github.com/cavecafe/slack-send/blob/main/slack-send.png?raw=true)
+![slack-send](https://raw.githubusercontent.com/cavecafe/slack-send/main/slack-send.png)
 
 ### Installation
 ```bash
@@ -9,10 +9,10 @@ A simple utility to send a Slack message using Slack Web API to your channels
 ```
 or 
 
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/slack-send)
+[![Get it from the Snap Store](https://raw.githubusercontent.com/cavecafe/slack-send/main/snap/snap-store-white.svg)](https://snapcraft.io/slack-send)
 
 or 
-
+~~~~
 ```bash
 # use it in your project directly
 > dotnet add package slack-send
@@ -63,7 +63,7 @@ slack-send --help
 ```
 
 #### Used with GitHub Actions events
-![Message with JSON payload](https://github.com/cavecafe/slack-send/blob/main/images/message.png?raw=true)
+![Message with JSON payload](https://raw.githubusercontent.com/cavecafe/slack-send/main/images/message.png)
 
 ## Note
 - You need to acquire your [Slack API token](https://api.slack.com/messaging/sending) from Slack in order for slack-send to send messages to your Slack channels, typically starts with 'xoxb-'.
@@ -137,7 +137,7 @@ Example:
 }
 ```
 
-![Reference to Slack Web API](https://github.com/cavecafe/slack-send/blob/main/images/slack-api.png?raw=true)
+![Reference to Slack Web API](https://raw.githubusercontent.com/cavecafe/slack-send/main/images/slack-api.png)
 
 ### Reference
 - https://api.slack.com/messaging/sending#publishing
