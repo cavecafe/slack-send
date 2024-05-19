@@ -39,20 +39,33 @@ plugs:
 compression: lzo
 build-base: core22
 
+# for core22
+architectures:
+  - build-on: amd64
+    build-for: amd64
+  - build-on: arm64
+    build-for: arm64
+  - build-on: armhf
+    build-for: armhf
+  - build-on: riscv64
+    build-for: riscv64
+
+# for core24 and later
 # noinspection YAMLSchemaValidation
-platforms:
-  amd64:
-    build-on: [amd64]
-    build-for: [amd64]
-  arm64:
-    build-on: [arm64]
-    build-for: [arm64]
-  armhf:
-    build-on: [armhf]
-    build-for: [armhf]
-  riscv64:
-    build-on: [riscv64]
-    build-for: [riscv64]
+#platforms:
+#  amd64:
+#    build-on: [amd64]
+#    build-for: [amd64]
+#  arm64:
+#    build-on: [arm64]
+#    build-for: [arm64]
+#  armhf:
+#    build-on: [armhf]
+#    build-for: [armhf]
+#  riscv64:
+#    build-on: [riscv64]
+#    build-for: [riscv64]
+
 parts:
   slack-send-src:
     plugin: dotnet
@@ -62,6 +75,8 @@ parts:
     build-packages:
       - dotnet-sdk-8.0
       - liblttng-ust1
+
+# for semantic versioning 
 #    override-stage: |
 #      craftctl default
 #      craftctl set version="$(craftctl get version)-$(git rev-parse --short HEAD)"
