@@ -55,7 +55,8 @@ public class SlackConfiguration
         {
             foreach (var attachment in Attachments)
             {
-                attachment.color = options.Status;
+                // if good warning or error, then use the pre-defined color, otherwise use the color as is unknown (grey)
+                attachment.color = Attachment.PreDefinedColors.GetValueOrDefault(options.Status, "#808080");
             }
         }
         
@@ -73,38 +74,34 @@ public class Attachment
 {
     public List<string>? mrkdwn_in { get; set; }
 
-    private static readonly Dictionary<string, string> colors = new()
+    internal static readonly Dictionary<string, string> PreDefinedColors = new()
     {
         { "warning", "#ffa500" },
         { "error", "#ff0000" },
         { "good", "#36a64f" }
     };
     
-    private string _rgbColor = colors["good"];
-    public string? color
-    {
-        get => colors[_rgbColor];
-        set => _rgbColor = value is not null ? colors[value] : colors["good"];
-    }
-
-    public string? pretext { get; set; } = "my message description";
-    public string? author_name { get; set; } = "slack-send";
-    public string? author_link { get; set; } = "https://snapcraft.io/slack-send/listing";
-    public string? author_icon { get; set; } = "https://dashboard.snapcraft.io/site_media/appmedia/2024/05/slack-send.png";
-    public string? title { get; set; } = "my title";
-    public string? title_link { get; set; } = "https://api.slack.com/";
-    public string? text { get; set; } = "my message body";
+    public string color
+    { get; set; } = PreDefinedColors["good"];
+    
+    public string pretext { get; set; } = "my message description";
+    public string author_name { get; set; } = "slack-send";
+    public string author_link { get; set; } = "https://snapcraft.io/slack-send/listing";
+    public string author_icon { get; set; } = "https://dashboard.snapcraft.io/site_media/appmedia/2024/05/slack-send.png";
+    public string title { get; set; } = "my title";
+    public string title_link { get; set; } = "https://api.slack.com/";
+    public string text { get; set; } = "my message body";
     public List<Field>? fields { get; set; } = new();
-    public string? thumb_url { get; set; } = "";
-    public string? footer { get; set; } = "";
-    public string? footer_icon { get; set; } = "";
+    public string thumb_url { get; set; } = "";
+    public string footer { get; set; } = "";
+    public string footer_icon { get; set; } = "";
     public int ts { get; set; }
 }
 
 public class Field
 {
-    public string? title { get; set; } = "my field title";
-    public string? value { get; set; } = "my field value";
+    public string title { get; set; } = "my field title";
+    public string value { get; set; } = "my field value";
     public bool @short { get; set; } = false;
 }
 
@@ -160,15 +157,24 @@ public class SlackClient : HttpClient
                 if (key.Key == ConsoleKey.Y)
                 {
                     Console.Write(@"Channel Name [default: general]:");
-                    var channel = Console.ReadLine() ?? "general";
+                    var channel = Console.ReadLine();
+                    channel = string.IsNullOrWhiteSpace(channel) ? "general" : channel;
+                    
                     Console.Write(@"Slack message title [default: Hello]: ");
-                    var title = Console.ReadLine() ?? "Hello";
+                    var title = Console.ReadLine();
+                    title = string.IsNullOrWhiteSpace(title) ? "Hello" : title;
+                    
                     Console.Write(@"Slack message body [default: Hi all]: ");
-                    var message = Console.ReadLine() ?? "Hi all";
+                    var message = Console.ReadLine();
+                    message = string.IsNullOrWhiteSpace(message) ? "Hi all" : message;
+                    
                     Console.Write(@"Slack message description [Default: test]: ");
-                    var description = Console.ReadLine() ?? "test";
+                    var description = Console.ReadLine();
+                    description = string.IsNullOrWhiteSpace(description) ? "test" : description;
+                    
                     Console.Write(@"Sender name [default: slack-send]: ");
-                    var senderName = Console.ReadLine() ?? "slack-send";
+                    var senderName = Console.ReadLine();
+                    senderName = string.IsNullOrWhiteSpace(senderName) ? "slack-send" : senderName;
                     
                     Console.Write(@"Slack API token:");
                     var token = Console.ReadLine();

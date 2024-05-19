@@ -14,7 +14,20 @@ if (fullPath != null)
             with.AutoHelp = true;
             with.HelpWriter = Console.Out;
         });
-        
+
+        if (args.Length == 0)
+        {
+            string channels = "";
+            if (slack.Settings.Channels != null)
+            {
+                foreach (var channel in slack.Settings.Channels)
+                {
+                    channels += channel + ";";
+                }
+                channels = channels.TrimEnd(';');
+                args = new[] { "-c", channels };
+            }
+        }
         var parserResult = parser.ParseArguments<Options>(args);
         parserResult.WithNotParsed(_ => { });
         parserResult.WithParsed(args =>

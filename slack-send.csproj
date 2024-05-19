@@ -4,8 +4,12 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>SlackSend</RootNamespace>
+    <!-- (TODO) for local debugging, comment out these -->
     <SelfContained>true</SelfContained>
     <PublishSingleFile>true</PublishSingleFile>
+    
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>Slack Send</Title>
