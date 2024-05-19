@@ -48,13 +48,13 @@ slack-send -d <description> -t <title> -m <message> -c <channel1>;<channel2> ...
 ![Message with JSON payload](images/message.png)
 
 ## Pre-requisites
-- Create a [Slack App and get the API Key](https://api.slack.com/messaging/sending)
+- Create a [Slack App and get the API Key](https://api.slack.com/messaging/sending) from your Slack workspace.
 - Create a configuration file `~/.slack-send` in the user's home directory.
-- Then run ./slack-send -m "Hello, My Slack Channel!" -c "#general"
+- Then run ./slack-send -m "Hello, My Slack Channel!" -c "general"
 
 ## Configuration JSON file (~/.slack-send)
 You can also use a configuration file to set the default values for the message, channel, and attachments.
-- The configuration file should be named `.slack-send` in user's home directory (`~/.slack-send`), which has the following keys:
+- The configuration file is in user's home directory (`~/.slack-send`), which has the following keys:
   - `ApiToken`: Your Slack API Key for a bot, typically starts with 'xoxb-'.
   - `ApiUrl`: The Slack API URL for sending messages.
   - `Channels`: An array of channel names to send the message to.
