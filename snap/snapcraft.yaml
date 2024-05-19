@@ -1,9 +1,9 @@
 name: slack-send
 adopt-info: slack-send
-base: core24
+base: core22
 # version.sh will be used to get the version 
 # to replace the version in the snapcraft.yaml
-version: 1.1.3
+version: 1.1.4
 
 summary: Command line tool to send messages to Slack channels
 description: SlackSend is a CLI tool to send slack messages.
@@ -37,7 +37,7 @@ plugs:
     write:
       - $HOME/.slack-send
 compression: lzo
-build-base: core24
+build-base: core22
 
 # noinspection YAMLSchemaValidation
 platforms:
@@ -58,7 +58,19 @@ parts:
     plugin: dotnet
     source: https://github.com/cavecafe/slack-send.git
     source-branch: main
-    # source-tag: snap-store
+    source-tag: snap-store
     build-packages:
       - dotnet-sdk-8.0
       - liblttng-ust1
+#    override-stage: |
+#      craftctl default
+#      craftctl set version="$(craftctl get version)-$(git rev-parse --short HEAD)"
+#      minor_version=$(git describe --tags --abbrev=0 | grep -Eo "[0-9]*.[0-9]*.[0-9]*" | cut -d "-" -f 2)
+#      patch_version=$(git describe --tags --abbrev=0 | grep -Eo "[0-9]*.[0-9]*.[0-9]*" | cut -d "-" -f 3)
+#      if [ $(( 10#$minor_version % 2 )) -eq 0 ] && [ $(( 10#$patch_version % 2 )) -eq 0 ] then
+#        craftctl set grade=stable
+#        craftctl set version="$(git describe --tags --abbrev=0)"
+#      else
+#        craftctl set grade=devel
+#        craftctl set version="$(git rev-parse --short HEAD).$(date -u +%Y-%m-%d)" # i.e. a2b9714.2024-02-22
+#      fi
