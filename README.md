@@ -3,7 +3,7 @@ A simple utility to send a Slack message using Slack Web API to your channels
 
 ![slack-send](https://raw.githubusercontent.com/cavecafe/slack-send/main/slack-send.png)
 
-### Installation
+## Installation
 ```bash
 > sudo snap install slack-send
 ```
@@ -21,7 +21,7 @@ A simple utility to send a Slack message using Slack Web API to your channels
 ```
 
 
-### Usage
+## Usage
 
 ```bash
 slack-send --help
@@ -67,11 +67,13 @@ slack-send --help
 #### Used with GitHub Actions events
 ![Message with JSON payload](https://raw.githubusercontent.com/cavecafe/slack-send/main/images/message.png)
 
+
 ## Note
 - You need to acquire your [Slack API token](https://api.slack.com/messaging/sending) from Slack in order for slack-send to send messages to your Slack channels, typically starts with 'xoxb-'.
 - The configuration file `~/.slack-send` will be created when the app run first time to store your configuration.
 
-### Configuration file (~/.slack-send)
+
+## Configuration file (~/.slack-send)
 You can also update the ~/.slack-send to set the default values for the message, channel, and attachments.
   - `ApiToken`: Your Slack API Key for a bot, typically starts with 'xoxb-'.
   - `ApiUrl`: The Slack API URL for sending messages.
@@ -93,7 +95,7 @@ You can also update the ~/.slack-send to set the default values for the message,
 }
 ```
 
-### 'Attachments' JSON Format
+## 'Attachments' JSON Format
 If you prefer to have fine control of your Slack message, you can use the Slack's own JSON format ([Attachments](https://api.slack.com/reference/messaging/attachments)) directly, which will override 
 the message and status options in '~/.slack-send'.
 
@@ -142,7 +144,7 @@ the message and status options in '~/.slack-send'.
 
 ![Reference to Slack Web API](https://raw.githubusercontent.com/cavecafe/slack-send/main/images/slack-api.png)
 
-### Reference
+## Reference
 - https://api.slack.com/messaging/sending#publishing
 - https://api.slack.com/methods/chat.postMessage
 - https://api.slack.com/docs/message-attachments
