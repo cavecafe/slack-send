@@ -43,8 +43,8 @@ build-base: core22
 architectures:
   - build-on: amd64
   - build-on: arm64
-#  - build-on: armhf
-#  - build-on: riscv64
+  #- build-on: armhf
+  #- build-on: riscv64
 
 # for core24 and later
 # noinspection YAMLSchemaValidation
@@ -67,10 +67,10 @@ parts:
     plugin: dotnet
     source: https://github.com/cavecafe/slack-send.git
     source-branch: main
-    #source-tag: snap-store
+    # source-tag: snap-store
     build-packages:
       - dotnet-sdk-8.0
-#      - liblttng-ust1
+      # - liblttng-ust1
 
 # for semantic versioning 
 #    override-stage: |
