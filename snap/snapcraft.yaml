@@ -15,7 +15,6 @@ apps:
     command: slack-send
     plugs: [ home, network ]
 
-# (TODO) Modify this with proper image
 icon: slack-send.png
 type: app
 title: SlackSend
@@ -27,8 +26,7 @@ environment:
   DOTNET_ROOT: $SNAP/usr/share/dotnet
   #CRAFT_ARCH_TARGET_BUILD_FOR: "amd64,arm64,armhf,riscv64"
 source-code: https://github.com/cavecafe/slack-send
-build-packages:
-  - dotnet-sdk-8.0
+build-packages: [dotnet-sdk-8.0]
 plugs:
   home:
     interface: personal-files
@@ -43,24 +41,6 @@ build-base: core22
 architectures:
   - build-on: amd64
   - build-on: arm64
-  #- build-on: armhf
-  #- build-on: riscv64
-
-# for core24 and later
-# noinspection YAMLSchemaValidation
-#platforms:
-#  amd64:
-#    build-on: [amd64]
-#    build-for: [amd64]
-#  arm64:
-#    build-on: [arm64]
-#    build-for: [arm64]
-#  armhf:
-#    build-on: [armhf]
-#    build-for: [armhf]
-#  riscv64:
-#    build-on: [riscv64]
-#    build-for: [riscv64]
 
 parts:
   slack-send-src:
@@ -68,20 +48,4 @@ parts:
     source: https://github.com/cavecafe/slack-send.git
     source-branch: main
     # source-tag: snap-store
-    build-packages:
-      - dotnet-sdk-8.0
-      # - liblttng-ust1
-
-# for semantic versioning 
-#    override-stage: |
-#      craftctl default
-#      craftctl set version="$(craftctl get version)-$(git rev-parse --short HEAD)"
-#      minor_version=$(git describe --tags --abbrev=0 | grep -Eo "[0-9]*.[0-9]*.[0-9]*" | cut -d "-" -f 2)
-#      patch_version=$(git describe --tags --abbrev=0 | grep -Eo "[0-9]*.[0-9]*.[0-9]*" | cut -d "-" -f 3)
-#      if [ $(( 10#$minor_version % 2 )) -eq 0 ] && [ $(( 10#$patch_version % 2 )) -eq 0 ] then
-#        craftctl set grade=stable
-#        craftctl set version="$(git describe --tags --abbrev=0)"
-#      else
-#        craftctl set grade=devel
-#        craftctl set version="$(git rev-parse --short HEAD).$(date -u +%Y-%m-%d)" # i.e. a2b9714.2024-02-22
-#      fi
+    build-packages: [dotnet-sdk-8.0]
