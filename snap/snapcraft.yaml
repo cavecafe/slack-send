@@ -1,10 +1,6 @@
 name: slack-send
-adopt-info: slack-send
-base: core22
-# version.sh will be used to get the version 
-# to replace the version in the snapcraft.yaml
 version: 1.1.4
-
+adopt-info: slack-send
 summary: Command line tool to send messages to Slack channels
 description: SlackSend is a CLI tool to send slack messages.
 grade: stable
@@ -15,6 +11,13 @@ apps:
     command: slack-send
     plugs: [ home, network ]
 
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+
+base: core22
+build-base: core22
+compression: lzo
 icon: slack-send.png
 type: app
 title: SlackSend
@@ -26,8 +29,31 @@ environment:
   DOTNET_ROOT: $SNAP/usr/share/dotnet
   #CRAFT_ARCH_TARGET_BUILD_FOR: "amd64,arm64,armhf,riscv64"
 source-code: https://github.com/cavecafe/slack-send
-build-packages: 
+build-packages:
   - dotnet-sdk-8.0
+
+parts:
+  slack-send-src:
+    source: https://github.com/cavecafe/slack-send.git
+    source-type: git
+    source-branch: main
+    # source-tag: snap-store
+    build-packages:
+      - dotnet-sdk-8.0
+    stage-packages:
+      - dotnet-runtime-8.0
+    plugin: dotnet
+    dotnet-build-configuration: Release
+    build-environment:
+      - DOTNET_ROOT: $SNAP/usr/share/dotnet
+    build-snaps:
+      - dotnet-sdk/8.0
+      - dotnet-runtime/8.0
+    stage-snaps:
+      - dotnet-sdk
+      - dotnet-runtime
+
+
 plugs:
   home:
     interface: personal-files
@@ -35,21 +61,7 @@ plugs:
       - $HOME/.slack-send
     write:
       - $HOME/.slack-send
-compression: lzo
-build-base: core22
 
-# for core22
-architectures:
-  - build-on: amd64
-  - build-on: arm64
 
-parts:
-  slack-send-src:
-    plugin: dotnet
-    source: https://github.com/cavecafe/slack-send.git
-    source-branch: main
-    # source-tag: snap-store
-    build-packages: 
-      - dotnet-sdk-8.0
-    stage-packages:
-      - dotnet-runtime-8.0
+
+
