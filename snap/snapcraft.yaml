@@ -33,7 +33,7 @@ build-packages:
   - dotnet-sdk-8.0
 
 parts:
-  slack-send-src:
+  slack-send:
     source: https://github.com/cavecafe/slack-send.git
     source-type: git
     source-branch: main
@@ -47,10 +47,8 @@ parts:
     build-environment:
       - DOTNET_ROOT: $SNAP/usr/share/dotnet
     build-snaps:
-      - dotnet-sdk/8.0
-      - dotnet-runtime/8.0
-    stage-snaps:
       - dotnet-sdk
+    stage-snaps:
       - dotnet-runtime
 plugs:
   home:
