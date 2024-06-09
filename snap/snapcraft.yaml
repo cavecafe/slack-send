@@ -52,16 +52,11 @@ parts:
     stage-snaps:
       - dotnet-sdk
       - dotnet-runtime
-
-
 plugs:
   home:
-    interface: personal-files
     read:
       - $HOME/.slack-send
     write:
       - $HOME/.slack-send
-
-
-
-
+    network:
+      - network
