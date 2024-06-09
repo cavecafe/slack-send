@@ -20,7 +20,7 @@ icon: slack-send.png
 type: app
 title: SlackSend
 issues: https://github.com/cavecafe/slack-send/issues
-contact: thomas <cavecafe@gmail.com>
+contact: https://github.com/cavecafe
 website: https://github.com/cavecafe/slack-send
 license: MIT
 environment:
