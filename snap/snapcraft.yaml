@@ -1,13 +1,12 @@
 name: slack-send
-version: 1.1.4
+version: 1.1.5
 adopt-info: slack-send
 summary: Command line tool to send messages to Slack channels
 description: SlackSend is a CLI tool to send slack messages.
 grade: stable
 confinement: strict
 
-base: core24
-# build-base: core22
+base: core22
 compression: lzo
 icon: slack-send.png
 type: app
@@ -16,7 +15,6 @@ issues: https://github.com/cavecafe/slack-send/issues
 contact: https://github.com/cavecafe
 website: https://github.com/cavecafe/slack-send
 license: MIT
-
 
 apps:
   slack-send:
@@ -34,7 +32,6 @@ source-code: https://github.com/cavecafe/slack-send
 build-packages:
   - dotnet-sdk-8.0
   - dotnet-runtime-8.0
-
 
 parts:
   slack-send:
