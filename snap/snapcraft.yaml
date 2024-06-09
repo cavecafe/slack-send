@@ -6,8 +6,8 @@ description: SlackSend is a CLI tool to send slack messages.
 grade: stable
 confinement: strict
 
-base: core22
-build-base: core22
+base: core24
+# build-base: core22
 compression: lzo
 icon: slack-send.png
 type: app
