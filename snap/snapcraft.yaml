@@ -44,7 +44,6 @@ parts:
       - dotnet-sdk-8.0
     stage-packages:
       - dotnet-runtime-8.0
-    dotnet-build-configuration: Release
     build-environment:
       - DOTNET_ROOT: $SNAP/usr/share/dotnet
     build-snaps:
