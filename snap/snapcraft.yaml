@@ -6,15 +6,6 @@ description: SlackSend is a CLI tool to send slack messages.
 grade: stable
 confinement: strict
 
-apps:
-  slack-send:
-    command: slack-send
-    plugs: [ home, network ]
-
-architectures:
-  - build-on: amd64
-  - build-on: arm64
-
 base: core22
 build-base: core22
 compression: lzo
@@ -25,12 +16,25 @@ issues: https://github.com/cavecafe/slack-send/issues
 contact: https://github.com/cavecafe
 website: https://github.com/cavecafe/slack-send
 license: MIT
+
+
+apps:
+  slack-send:
+    command: slack-send
+    plugs: [ home, network ]
+
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+
 environment:
   DOTNET_ROOT: $SNAP/usr/share/dotnet
   #CRAFT_ARCH_TARGET_BUILD_FOR: "amd64,arm64,armhf,riscv64"
 source-code: https://github.com/cavecafe/slack-send
 build-packages:
   - dotnet-sdk-8.0
+  - dotnet-runtime-8.0
+
 
 parts:
   slack-send:
@@ -38,18 +42,20 @@ parts:
     source-type: git
     source-branch: main
     # source-tag: snap-store
+    plugin: dotnet
     build-packages:
       - dotnet-sdk-8.0
     stage-packages:
       - dotnet-runtime-8.0
-    plugin: dotnet
     dotnet-build-configuration: Release
     build-environment:
       - DOTNET_ROOT: $SNAP/usr/share/dotnet
     build-snaps:
-      - dotnet-sdk
+      - dotnet-sdk-8.0
     stage-snaps:
-      - dotnet-runtime
+      - dotnet-runtime-8.0
+      - slack-send
+
 plugs:
   home:
     read:
