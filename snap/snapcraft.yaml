@@ -67,7 +67,7 @@ parts:
     plugin: dotnet
     source: https://github.com/cavecafe/slack-send.git
     source-branch: main
-    # source-tag: snap-store
+    ## source-tag: snap-store
     build-packages:
       - dotnet-sdk-8.0
       # - liblttng-ust1
