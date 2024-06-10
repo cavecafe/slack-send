@@ -39,7 +39,7 @@ parts:
     source-type: git
     source-branch: main
     # source-tag: snap-store
-    plugin: autotools
+    plugin: dotnet-sdk
     build-packages:
       - dotnet-sdk-8.0
     stage-packages:
